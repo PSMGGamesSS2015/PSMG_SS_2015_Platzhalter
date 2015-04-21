@@ -3,8 +3,8 @@
 #Developer: 
 Ewald Reinhardt (Owlwald) - Project Manager, Level Designer 
 
-Khang Ho (Muhey) - Storyteller, Graphic Designer, Audio Engineer
+Khang Ho (Muhey) - Graphic Designer, Audio Engineer
 
-Dominik Deller (Kinderfest) - Programer
+Dominik Deller (Kinderfest) - Programming, Animations
 
-Philipp Weber (webphil) - Programer
+Philipp Weber (webphil) - Programmin, Animations

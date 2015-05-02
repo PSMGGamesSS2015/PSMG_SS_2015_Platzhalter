@@ -12,14 +12,16 @@ public class SimplePlatformController : MonoBehaviour {
 
     public Transform groundCheck;
 
+    public Shooting shootingScript;
+
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
 	// Use this for initialization
-	void Awake () {
+	void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-	
-	}
+        shootingScript = GameObject.Find("shootingSpot").GetComponent<Shooting>();
+    }
 	
 	// Update is called once per frame
     void Update()
@@ -47,14 +49,14 @@ public class SimplePlatformController : MonoBehaviour {
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
         }
 
-        /*if (h > 0 && !facingRight)
+        if (h > 0 && !facingRight)
         {
             Flip();
         }
         else if (h < 0 && facingRight)
         {
             Flip();
-        }*/
+        }
 
         if (jump)
         {
@@ -64,11 +66,12 @@ public class SimplePlatformController : MonoBehaviour {
         }
     }
 
-    /*void Flip()
+    void Flip()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }*/
+        shootingScript.setSpeed(-1);
+    }
 }

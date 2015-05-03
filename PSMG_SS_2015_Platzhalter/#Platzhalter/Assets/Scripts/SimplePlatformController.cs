@@ -20,7 +20,7 @@ public class SimplePlatformController : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-        shootingScript = GameObject.Find("shootingSpot").GetComponent<Shooting>();
+        shootingScript = GameObject.Find("barrel").GetComponent<Shooting>();
     }
 	
 	// Update is called once per frame
@@ -70,7 +70,7 @@ public class SimplePlatformController : MonoBehaviour {
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
+        theScale.y *= -1;
         transform.localScale = theScale;
         shootingScript.setSpeed(-1);
     }

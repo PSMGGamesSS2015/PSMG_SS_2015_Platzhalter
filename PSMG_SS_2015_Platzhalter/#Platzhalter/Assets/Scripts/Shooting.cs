@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour {
     private float vertical = 0f;
     private float damage = 10;
     public Rigidbody projectile;
+    private Rigidbody instantiatedProjectile;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class Shooting : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
 
             Destroy(instantiatedProjectile.gameObject, 1);
@@ -41,5 +42,14 @@ public class Shooting : MonoBehaviour {
     public void setSpeed(int direction)
     {
         speed = speed * direction;
+    }
+
+    void OnTriggerEnter(Collider bullet)
+    {
+        if (bullet.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Bullet was destroyed");
+       }
     }
 }

@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Shooting : MonoBehaviour {
 
-    private float speed = 25;
+    private float speed = 25f;
+    private float vertical = 0f;
+    private float damage = 10;
     public Rigidbody projectile;
+    private Rigidbody instantiatedProjectile;
 
 	// Use this for initialization
 	void Start () {
@@ -16,10 +19,22 @@ public class Shooting : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-            instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, 0f));
+            instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
 
             Destroy(instantiatedProjectile.gameObject, 1);
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (vertical == 10f)
+            {
+                vertical = 0f;
+            }
+            else
+            {
+                vertical = 10f;
+            }
         }
 	
 	}
@@ -27,5 +42,14 @@ public class Shooting : MonoBehaviour {
     public void setSpeed(int direction)
     {
         speed = speed * direction;
+    }
+
+    void OnTriggerEnter(Collider bullet)
+    {
+        if (bullet.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Bullet was destroyed");
+       }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bulletScript : MonoBehaviour {
+public class GoalScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,10 +12,7 @@ public class bulletScript : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnTriggerEnter(Collider collider){
-		if (collider.tag == "Ground") {
-			Destroy (this.gameObject);
-		}
-
+	void OnTriggerEnter(Collider collison){
+		Debug.Log ("win");
 	}
 }

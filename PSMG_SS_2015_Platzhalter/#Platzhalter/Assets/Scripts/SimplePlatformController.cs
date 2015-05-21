@@ -22,8 +22,11 @@ public class SimplePlatformController : MonoBehaviour {
 
 	public Image game_over;
 
+	private int health;
+
 	// Use this for initialization
 	void Start() {
+		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
         shootingScript = GameObject.Find("barrel").GetComponent<Shooting>();
 		game_over.enabled = false;
@@ -33,6 +36,11 @@ public class SimplePlatformController : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+
+		if (health == 0) {
+			game_over.enabled=true;
+			Destroy (this.gameObject);
+		}
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -81,4 +89,11 @@ public class SimplePlatformController : MonoBehaviour {
         transform.localScale = theScale;
         shootingScript.setSpeed(-1);
     }
+	public void onHit(){
+		health -= 20;
+	}
+	public void fallingToDeath(){
+		health = 0;
+	}
+
 }

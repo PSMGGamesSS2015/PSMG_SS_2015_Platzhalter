@@ -4,34 +4,36 @@ using System.Collections;
 public class PatrolingEnemyScript : MonoBehaviour {
 	
 	public float moveSpeed;
+	private int health;
 	
 	// Use this for initialization
 	void Start () {
-		
+		health = 100;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (health == 0) {
+			Destroy(this.gameObject);
+		}
 		transform.Translate (new Vector3 (moveSpeed, 0, 0) * Time.deltaTime);
 		
 	}
 	
-	void OnCollisionEnter2D(Collision2D col){
-		
-		if (col.gameObject.tag == "Box") {
-			
-			moveSpeed *= -1;
-			
-		}
-		
-		if (col.gameObject.tag == "Player") {
-			
-			Destroy(col.gameObject);
-			
-		}
-		
+
+	public void onHit(){
+		health -= 20;
 	}
-	
+	void OnTriggerEnter(Collider collision){
+		if (collision.tag == "Box") {
+			moveSpeed*=-1;
+		}
+		else if (collision.tag == "Player") {
+
+			Debug.Log("Playerhit");
+			collision.GetComponent<SimplePlatformController>().onHit();
+		}
+
+	}
 	
 }

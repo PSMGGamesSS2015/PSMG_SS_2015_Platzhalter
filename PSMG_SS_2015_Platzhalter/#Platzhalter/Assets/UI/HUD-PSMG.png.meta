@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c8a4d28b45bdd164892fabafc0152936
-timeCreated: 1432204989
+timeCreated: 1432209154
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -87,31 +87,21 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: HUD-PSMG_3
-      rect:
-        serializedVersion: 2
-        x: 1234
-        y: 801
-        width: 669
-        height: 144
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_4
       rect:
         serializedVersion: 2
         x: 1235
-        y: 552
+        y: 595
         width: 669
-        height: 144
+        height: 143
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_5
       rect:
         serializedVersion: 2
-        x: 1208
-        y: 311
+        x: 1235
+        y: 413
         width: 669
         height: 144
       alignment: 0
@@ -120,9 +110,19 @@ TextureImporter:
     - name: HUD-PSMG_6
       rect:
         serializedVersion: 2
-        x: 1183
-        y: 76
-        width: 668
+        x: 1235
+        y: 216
+        width: 669
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HUD-PSMG_3
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 795
+        width: 669
         height: 144
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -130,9 +130,9 @@ TextureImporter:
     - name: HUD-PSMG_7
       rect:
         serializedVersion: 2
-        x: 84
+        x: 98
         y: 96
-        width: 860
+        width: 861
         height: 143
       alignment: 0
       pivot: {x: .5, y: .5}

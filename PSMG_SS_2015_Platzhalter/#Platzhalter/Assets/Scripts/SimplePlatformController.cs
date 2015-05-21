@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SimplePlatformController : MonoBehaviour {
 
@@ -17,10 +18,15 @@ public class SimplePlatformController : MonoBehaviour {
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
+	public AudioSource jumpSound;
+
+	public Image game_over;
+
 	// Use this for initialization
 	void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         shootingScript = GameObject.Find("barrel").GetComponent<Shooting>();
+		game_over.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -61,6 +67,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (jump)
         {
             //anim.SetTrigger("Jump");
+			jumpSound.Play ();
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }

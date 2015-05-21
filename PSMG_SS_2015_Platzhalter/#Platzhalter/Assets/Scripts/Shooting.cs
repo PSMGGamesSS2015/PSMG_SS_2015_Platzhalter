@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class Shooting : MonoBehaviour {
     private float damage = 10;
     public Rigidbody projectile;
     private Rigidbody instantiatedProjectile;
+	public AudioSource shootSound;
+	public Image Weapon_1,Weapon_2;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +24,7 @@ public class Shooting : MonoBehaviour {
         {
             instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
+			shootSound.Play ();
 
             Destroy(instantiatedProjectile.gameObject, 1);
         }
@@ -30,10 +34,16 @@ public class Shooting : MonoBehaviour {
             if (vertical == 10f)
             {
                 vertical = 0f;
+				shootSound.pitch=1f;
+				Weapon_1.enabled=true;
+				Weapon_2.enabled=false;
             }
             else
             {
                 vertical = 10f;
+				shootSound.pitch=0.4f;
+				Weapon_1.enabled=false;
+				Weapon_2.enabled=true;
             }
         }
 	

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c8a4d28b45bdd164892fabafc0152936
-timeCreated: 1431859985
+timeCreated: 1432204989
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,80 +60,80 @@ TextureImporter:
     - name: HUD-PSMG_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 165
-        width: 88
-        height: 82
+        x: 11
+        y: 726
+        width: 331
+        height: 287
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_1
       rect:
         serializedVersion: 2
-        x: 105
-        y: 168
-        width: 78
-        height: 72
+        x: 442
+        y: 726
+        width: 331
+        height: 287
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_2
       rect:
         serializedVersion: 2
-        x: 197
-        y: 167
-        width: 85
-        height: 76
+        x: 854
+        y: 726
+        width: 331
+        height: 287
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_3
       rect:
         serializedVersion: 2
-        x: 300
-        y: 192
-        width: 158
-        height: 48
+        x: 1234
+        y: 801
+        width: 669
+        height: 144
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_4
       rect:
         serializedVersion: 2
-        x: 296
-        y: 147
-        width: 157
-        height: 41
+        x: 1235
+        y: 552
+        width: 669
+        height: 144
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_5
       rect:
         serializedVersion: 2
-        x: 281
-        y: 102
-        width: 163
-        height: 42
+        x: 1208
+        y: 311
+        width: 669
+        height: 144
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_6
       rect:
         serializedVersion: 2
-        x: 273
-        y: 47
-        width: 164
-        height: 51
+        x: 1183
+        y: 76
+        width: 668
+        height: 144
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HUD-PSMG_7
       rect:
         serializedVersion: 2
-        x: 20
-        y: 17
-        width: 209
-        height: 55
+        x: 84
+        y: 96
+        width: 860
+        height: 143
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -7,12 +7,12 @@ public class Shooting : MonoBehaviour {
     private float speed = 25f;
     private float vertical = 0f;
     private float damage = 10;
-    public Rigidbody projectile;
-	private Rigidbody instantiatedProjectile, instantiatedProjectile2;
+    public GameObject projectile;
 	public AudioSource shootSound;
 	public Image Weapon_1,Weapon_2;
 	private int weapon;
-
+	private GameObject bullet;
+	private GameObject bullet_weapon2_1,bullet_weapon2_2;
 	// Use this for initialization
 	void Start () {
 		weapon = 1;
@@ -49,21 +49,23 @@ public class Shooting : MonoBehaviour {
 	
 	}
 	private void fireWeaponOne(){
-		instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-		instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		//instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+		//instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		shootSound.Play ();
-
-		Destroy(instantiatedProjectile.gameObject, 1);
+		Destroy (bullet.gameObject, 1);
+		//Destroy(instantiatedProjectile.gameObject, 1);
 	}
 	private void fireWeaponTwo(){
-		instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-		instantiatedProjectile2 = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-		instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
-		instantiatedProjectile2.velocity =transform.TransformDirection (new Vector2(speed,-vertical));
+		bullet_weapon2_1 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_1.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		bullet_weapon2_2 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_2.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
 		shootSound.Play ();
 	
-		Destroy(instantiatedProjectile.gameObject, 1);
-		Destroy(instantiatedProjectile2.gameObject,1);
+		Destroy(bullet_weapon2_1.gameObject, 1);
+		Destroy(bullet_weapon2_2.gameObject,1);
 	}
 	private void switchToWeaponOne(){
 		weapon=1;

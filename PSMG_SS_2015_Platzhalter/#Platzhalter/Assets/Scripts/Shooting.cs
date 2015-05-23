@@ -9,13 +9,19 @@ public class Shooting : MonoBehaviour {
     private float damage = 10;
     public GameObject projectile;
 	public AudioSource shootSound;
-	public Image Weapon_1,Weapon_2;
 	private int weapon;
 	private GameObject bullet;
 	private GameObject bullet_weapon2_1,bullet_weapon2_2;
+
+	public Image Weapon_1_Active,Weapon_1_Inactive,Weapon_2_Active,Weapon_2_Inactive;
+
+
 	// Use this for initialization
 	void Start () {
 		weapon = 1;
+		Weapon_1_Active.enabled = true;
+		Weapon_1_Inactive.enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -51,11 +57,8 @@ public class Shooting : MonoBehaviour {
 	private void fireWeaponOne(){
 		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
 		bullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
-		//instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-		//instantiatedProjectile.velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		shootSound.Play ();
 		Destroy (bullet.gameObject, 1);
-		//Destroy(instantiatedProjectile.gameObject, 1);
 	}
 	private void fireWeaponTwo(){
 		bullet_weapon2_1 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
@@ -71,15 +74,21 @@ public class Shooting : MonoBehaviour {
 		weapon=1;
 		vertical = 0f;
 		shootSound.pitch=1f;
-		Weapon_1.enabled=true;
-		Weapon_2.enabled=false;
+		Weapon_1_Active.enabled=true;
+		Weapon_1_Inactive.enabled=false;
+
+		Weapon_2_Active.enabled=false;
+		Weapon_2_Inactive.enabled=true;
 	}
 	private void switchToWeaponTwo(){
 		weapon=2;
 		vertical = 9f;
 		shootSound.pitch=0.4f;
-		Weapon_1.enabled=false;
-		Weapon_2.enabled=true;
+		Weapon_1_Active.enabled=false;
+		Weapon_1_Inactive.enabled=true;
+		
+		Weapon_2_Active.enabled=true;
+		Weapon_2_Inactive.enabled=false;
 	}
 
     public void setSpeed(int direction)

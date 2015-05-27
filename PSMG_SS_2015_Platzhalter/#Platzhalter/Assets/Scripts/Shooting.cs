@@ -13,20 +13,16 @@ public class Shooting : MonoBehaviour {
 	private GameObject bullet;
 	private GameObject bullet_weapon2_1,bullet_weapon2_2;
 
-	public Image Weapon_1_Active,Weapon_1_Inactive,Weapon_2_Active,Weapon_2_Inactive;
+	public GameObject ui_controller;
 
 
 	// Use this for initialization
 	void Start () {
 		weapon = 1;
-		Weapon_1_Active.enabled = true;
-		Weapon_1_Inactive.enabled = false;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         if (Input.GetButtonDown("Fire1"))
         {
 			switch(weapon){
@@ -74,21 +70,13 @@ public class Shooting : MonoBehaviour {
 		weapon=1;
 		vertical = 0f;
 		shootSound.pitch=1f;
-		Weapon_1_Active.enabled=true;
-		Weapon_1_Inactive.enabled=false;
-
-		Weapon_2_Active.enabled=false;
-		Weapon_2_Inactive.enabled=true;
+		ui_controller.GetComponent<UIScript> ().switch_w2_w1 ();
 	}
 	private void switchToWeaponTwo(){
 		weapon=2;
 		vertical = 9f;
 		shootSound.pitch=0.4f;
-		Weapon_1_Active.enabled=false;
-		Weapon_1_Inactive.enabled=true;
-		
-		Weapon_2_Active.enabled=true;
-		Weapon_2_Inactive.enabled=false;
+		ui_controller.GetComponent<UIScript> ().switch_w1_w2 ();
 	}
 
     public void setSpeed(int direction)

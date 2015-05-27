@@ -37,7 +37,7 @@ public class SimplePlatformController : MonoBehaviour {
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-		if (health == 0) {
+		if (health <= 0) {
 			game_over.enabled=true;
 			Destroy (this.gameObject);
 		}

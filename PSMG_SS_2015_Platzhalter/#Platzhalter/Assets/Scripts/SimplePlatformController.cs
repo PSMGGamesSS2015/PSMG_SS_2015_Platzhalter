@@ -96,4 +96,17 @@ public class SimplePlatformController : MonoBehaviour {
 		health = 0;
 	}
 
+    void OnTriggerEnter2D(Collider2D player)
+    {
+        if (player.gameObject.tag == "DeathZone")
+        {
+            Application.LoadLevel("NewScene");
+        }
+
+        if (player.gameObject.tag == "Goal")
+        {
+            Application.LoadLevel("NewScene");
+        }
+    }
+
 }

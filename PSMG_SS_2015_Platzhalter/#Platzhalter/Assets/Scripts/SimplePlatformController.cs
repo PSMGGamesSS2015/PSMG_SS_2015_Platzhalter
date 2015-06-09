@@ -13,6 +13,8 @@ public class SimplePlatformController : MonoBehaviour {
 
     public Transform groundCheck;
 
+    public GameObject player;
+
     public Shooting shootingScript;
 
     private bool grounded = true;
@@ -46,6 +48,11 @@ public class SimplePlatformController : MonoBehaviour {
         {
             jump = true;
         }
+
+        if (health == 0)
+        {
+            Application.LoadLevel("NewScene");
+        }
     }
 
     void FixedUpdate()
@@ -75,7 +82,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (jump)
         {
             //anim.SetTrigger("Jump");
-			jumpSound.Play ();
+			//jumpSound.Play ();
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
@@ -84,9 +91,9 @@ public class SimplePlatformController : MonoBehaviour {
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.y *= -1;
-        transform.localScale = theScale;
+        GameObject player;
+        player = GameObject.Find("PlayerModel");
+        player.transform.RotateAround(transform.position, transform.up, 180f);
         shootingScript.setSpeed(-1);
     }
 	public void onHit(){
@@ -106,6 +113,12 @@ public class SimplePlatformController : MonoBehaviour {
         if (player.gameObject.tag == "Goal")
         {
             Application.LoadLevel("NewScene");
+        }
+
+        if (player.gameObject.tag == "Enemy")
+        {
+            Debug.Log("penis");
+            onHit();        
         }
     }
 

@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour {
     private float speed = 25f;
     private float vertical = 0f;
     private float damage = 10;
+    private bool facingRight = true;
     public GameObject projectile;
 	public AudioSource shootSound;
 	private int weapon;
@@ -52,6 +53,10 @@ public class Shooting : MonoBehaviour {
 	}
 	private void fireWeaponOne(){
 		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+        if (facingRight == false)
+        {
+            bullet.transform.RotateAround(transform.position, transform.up, 180f);
+        }
 		bullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		shootSound.Play ();
 		Destroy (bullet.gameObject, 1);
@@ -82,6 +87,11 @@ public class Shooting : MonoBehaviour {
     public void setSpeed(int direction)
     {
         speed = speed * direction;
+    }
+
+    public void changeRotation()
+    {
+        facingRight = !facingRight;
     }
 
     void OnTriggerEnter(Collider bullet)

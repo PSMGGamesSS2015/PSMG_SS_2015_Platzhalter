@@ -16,8 +16,6 @@ public class SimplePlatformController : MonoBehaviour {
     public GameObject player;
     public GameObject UIController;
 
-    public Shooting shootingScript;
-
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
@@ -31,7 +29,6 @@ public class SimplePlatformController : MonoBehaviour {
 	void Start() {
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
-        shootingScript = GameObject.Find("barrel").GetComponent<Shooting>();
 		game_over.enabled = false;
     }
 	
@@ -90,7 +87,6 @@ public class SimplePlatformController : MonoBehaviour {
         GameObject player;
         player = GameObject.Find("PlayerModel");
         player.transform.RotateAround(transform.position, transform.up, 180f);
-        shootingScript.setSpeed(-1);
     }
 	public void onHit(){
 		health -= 20;

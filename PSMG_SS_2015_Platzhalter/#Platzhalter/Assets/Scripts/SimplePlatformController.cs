@@ -100,7 +100,7 @@ public class SimplePlatformController : MonoBehaviour {
     {
         if (player.gameObject.tag == "DeathZone")
         {
-            Application.LoadLevel("NewScene");
+            Application.LoadLevel("GameOverScene");
         }
 
         if (player.gameObject.tag == "Goal")

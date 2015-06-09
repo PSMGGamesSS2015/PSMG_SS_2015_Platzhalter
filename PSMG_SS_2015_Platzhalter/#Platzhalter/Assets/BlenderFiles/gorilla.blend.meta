@@ -1,70 +1,24 @@
 fileFormatVersion: 2
-guid: 9683c66e059f9384aad506d45569996f
-timeCreated: 1430651496
+guid: cd5ac143a8c70d04eb299674f71a9aee
+timeCreated: 1433847162
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Bauch
-    100006: Bone_001
-    100008: Cube_001
-    100010: foot_roll_l
-    100012: foot_roll_r
-    100014: fu_
-    100016: fu__002
-    100018: Head
-    100020: kanone_l
-    100022: kanone_r
-    100024: leg_control
-    100026: leg_control_002
-    100028: Neck
-    100030: Oberarm_l
-    100032: Oberarm_r
-    100034: oberes_bein
-    100036: oberes_bein_002
-    100038: Root
-    100040: toes_control_l
-    100042: toes_control_r
-    100044: unterarm_l
-    100046: unterarm_r
-    100048: unteres_bein
-    100050: unteres_bein_001
-    400000: //RootNode
-    400002: Armature
-    400004: Bauch
-    400006: Bone_001
-    400008: Cube_001
-    400010: foot_roll_l
-    400012: foot_roll_r
-    400014: fu_
-    400016: fu__002
-    400018: Head
-    400020: kanone_l
-    400022: kanone_r
-    400024: leg_control
-    400026: leg_control_002
-    400028: Neck
-    400030: Oberarm_l
-    400032: Oberarm_r
-    400034: oberes_bein
-    400036: oberes_bein_002
-    400038: Root
-    400040: toes_control_l
-    400042: toes_control_r
-    400044: unterarm_l
-    400046: unterarm_r
-    400048: unteres_bein
-    400050: unteres_bein_001
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    4300002: Cube_001
+    100000: Cube
+    100002: Cube_001
+    100004: //RootNode
+    400000: Cube
+    400002: Cube_001
+    400004: //RootNode
+    2300000: Cube
+    2300002: Cube_001
+    3300000: Cube
+    3300002: Cube_001
+    4300000: Cube_001
+    4300002: Cube
     7400000: Default Take
-    7400002: Walk_blocking
     9500000: //RootNode
-    13700000: Cube_001
   materials:
     importMaterials: 1
     materialName: 0

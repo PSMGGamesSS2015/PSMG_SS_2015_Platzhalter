@@ -39,6 +39,12 @@ public class UIScript : MonoBehaviour {
 	}
 
 	private void setupLifebar(){
+		LB_1.enabled = true;
+		LB_2.enabled = true;
+		LB_3.enabled = true;
+		LB_4.enabled = true;
+		LB_5.enabled = true;
+
 
 	}
 	public void switch_w1_w2(){
@@ -101,5 +107,53 @@ public class UIScript : MonoBehaviour {
 	public void unlock_w4(){
 		W4_L.enabled = false;
 		W4_IA.enabled = true;
+	}
+	public void update_life(int health){
+		if (health == 100) {
+			LB_1.enabled = true;
+			LB_2.enabled = true;
+			LB_3.enabled = true;
+			LB_4.enabled = true;
+			LB_5.enabled = true;
+		}
+		else if (health == 80) {
+			LB_1.enabled = true;
+			LB_2.enabled = true;
+			LB_3.enabled = true;
+			LB_4.enabled = true;
+			LB_5.enabled = false;
+		}
+		else if (health == 60) {
+			LB_1.enabled = true;
+			LB_2.enabled = true;
+			LB_3.enabled = true;
+			LB_4.enabled = false;
+			LB_5.enabled = false;
+		}
+		else if (health == 40) {
+			LB_1.enabled = true;
+			LB_2.enabled = false;
+			LB_3.enabled = false;
+			LB_4.enabled = false;
+			LB_5.enabled = false;
+		}
+		else if (health == 20) {
+			LB_1.enabled = true;
+			LB_2.enabled = false;
+			LB_3.enabled = false;
+			LB_4.enabled = false;
+			LB_5.enabled = false;
+		}
+		else if (health == 0) {
+			LB_1.enabled = false;
+			LB_2.enabled = false;
+			LB_3.enabled = false;
+			LB_4.enabled = false;
+			LB_5.enabled = false;
+		}
+
+
+
+		
 	}
 }

@@ -24,7 +24,7 @@ public class PatrolingEnemyScript : MonoBehaviour {
 	public void onHit(){
 		health -= 20;
 	}
-	void OnTriggerEnter(Collider collision){
+	void OnTriggerEnter2D(Collider2D collision){
 		if (collision.tag == "Box") {
 			moveSpeed*=-1;
 		}

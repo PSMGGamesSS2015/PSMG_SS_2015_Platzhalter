@@ -14,6 +14,7 @@ public class SimplePlatformController : MonoBehaviour {
     public Transform groundCheck;
 
     public GameObject player;
+    public GameObject UIController;
 
     public Shooting shootingScript;
 
@@ -38,11 +39,6 @@ public class SimplePlatformController : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
-		if (health <= 0) {
-			game_over.enabled=true;
-			Destroy (this.gameObject);
-		}
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -98,6 +94,13 @@ public class SimplePlatformController : MonoBehaviour {
     }
 	public void onHit(){
 		health -= 20;
+        UIController.GetComponent<UIScript>().update_life(health);
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+            Application.LoadLevel("GameOverScene");
+        }
 	}
 	public void fallingToDeath(){
 		health = 0;
@@ -112,7 +115,7 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (player.gameObject.tag == "Goal")
         {
-            Application.LoadLevel("NewScene");
+            Application.LoadLevel("BossRoom");
         }
 
         if (player.gameObject.tag == "Enemy")

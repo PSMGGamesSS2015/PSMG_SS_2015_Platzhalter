@@ -21,6 +21,8 @@ public class SimplePlatformController : MonoBehaviour {
 
 	public AudioSource jumpSound;
 
+	private bool god;
+
 
 	private int health;
 
@@ -39,7 +41,16 @@ public class SimplePlatformController : MonoBehaviour {
         {
             jump = true;
         }
+		//Godmode shenanigans
 
+			if (Input.GetKey (KeyCode.G) && Input.GetKey (KeyCode.LeftShift)) {
+				god=true;
+				health=100000;
+				maxSpeed=25f;
+			}
+			if (Input.GetButtonDown ("Jump") && god) {
+				jump=true;
+			}
     }
 
     void FixedUpdate()
@@ -89,7 +100,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            Application.LoadLevel("GameOverScene");
+            Application.LoadLevel("Game Over");
         }
 	}
 	public void fallingToDeath(){
@@ -100,12 +111,12 @@ public class SimplePlatformController : MonoBehaviour {
     {
         if (player.gameObject.tag == "DeathZone")
         {
-            Application.LoadLevel("GameOverScene");
+            Application.LoadLevel("Game Over");
         }
 
         if (player.gameObject.tag == "Goal")
         {
-            Application.LoadLevel("BossRoom");
+            Application.LoadLevel("Level 1 Boss");
         }
 
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")

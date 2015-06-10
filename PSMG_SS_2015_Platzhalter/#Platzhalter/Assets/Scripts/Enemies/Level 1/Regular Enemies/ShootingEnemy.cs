@@ -9,7 +9,7 @@ public class ShootingEnemy : MonoBehaviour {
     private float health = 30f;
 	public GameObject projectile;
 	private GameObject bullet;
-	private float distance;
+	private float distance= 0.7f;
 
 	
 
@@ -27,7 +27,7 @@ public class ShootingEnemy : MonoBehaviour {
 	private void fire(){
 		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
-		Destroy(bullet.gameObject, 0.4f);
+		Destroy(bullet.gameObject, distance);
 	}
 
     private void checkHealth()

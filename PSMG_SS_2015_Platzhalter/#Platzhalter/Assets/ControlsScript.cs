@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RestartScript : MonoBehaviour {
+public class ControlsScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,8 +10,6 @@ public class RestartScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButton("Submit")){
-			Application.LoadLevel("Level 1");
-		}
+	
 	}
 }

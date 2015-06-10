@@ -17,37 +17,12 @@ public class BananaThrower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		checkHealth ();
+
 	}
 	private void fire(){
 		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-8), Random.Range(10f,14f)));
 		Destroy(bullet.gameObject, 3f);
 	}
-	private void checkHealth()
-	{
-		if (health <= 0)
-		{
-			foreach (Transform childTransform in this.transform)
-			{
-				Destroy(childTransform.gameObject);
-			}
-			Destroy(this.gameObject);
-			
-		}
-	}
-	
-	private void onHit()
-	{
-		Debug.Log ("MonkeyHIT");
-		health -= 10; 
-	}
-	
-	void OnTriggerEnter2D(Collider2D player)
-	{
-		if (player.gameObject.tag == "BulletPlayer")
-		{
-			onHit();
-		}
-	}
+
 }

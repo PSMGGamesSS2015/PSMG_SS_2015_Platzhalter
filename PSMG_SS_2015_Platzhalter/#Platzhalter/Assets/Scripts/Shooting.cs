@@ -57,15 +57,15 @@ public class Shooting : MonoBehaviour {
         {
             bullet.transform.RotateAround(transform.position, transform.up, 180f);
         }
-		bullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		shootSound.Play ();
 		Destroy (bullet.gameObject, 1);
 	}
 	private void fireWeaponTwo(){
 		bullet_weapon2_1 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet_weapon2_1.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
+		bullet_weapon2_1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		bullet_weapon2_2 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet_weapon2_2.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
+		bullet_weapon2_2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
 		shootSound.Play ();
 	
 		Destroy(bullet_weapon2_1.gameObject, 1);
@@ -84,22 +84,5 @@ public class Shooting : MonoBehaviour {
 		ui_controller.GetComponent<UIScript> ().switch_w1_w2 ();
 	}
 
-    public void setSpeed(int direction)
-    {
-        speed = speed * direction;
-    }
 
-    public void changeRotation()
-    {
-        facingRight = !facingRight;
-    }
-
-    void OnTriggerEnter(Collider bullet)
-    {
-        if (bullet.gameObject.tag == "Enemy")
-        {
-            Destroy(this.gameObject);
-            Debug.Log("Bullet was destroyed");
-       }
-    }
 }

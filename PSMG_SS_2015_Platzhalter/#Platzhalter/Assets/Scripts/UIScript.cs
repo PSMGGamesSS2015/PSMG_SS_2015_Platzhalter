@@ -132,7 +132,7 @@ public class UIScript : MonoBehaviour {
 		}
 		else if (health == 40) {
 			LB_1.enabled = true;
-			LB_2.enabled = false;
+			LB_2.enabled = true;
 			LB_3.enabled = false;
 			LB_4.enabled = false;
 			LB_5.enabled = false;

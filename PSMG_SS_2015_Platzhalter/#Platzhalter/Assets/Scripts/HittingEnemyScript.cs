@@ -3,7 +3,8 @@ using System.Collections;
 
 public class HittingEnemyScript : MonoBehaviour {
 
-	public float moveSpeed;
+	private float moveSpeed = 3;
+    private float health = 50;
 
 	// Use this for initialization
 	void Start () {
@@ -14,34 +15,37 @@ public class HittingEnemyScript : MonoBehaviour {
 	void Update () {
 
 		transform.Translate (new Vector3 (moveSpeed, 0, 0) * Time.deltaTime);
-		checkForPlayer ();
+
+        if (health <= 0)
+        {
+            foreach (Transform childTransform in this.transform)
+            {
+                Destroy(childTransform.gameObject);
+            }
+            Destroy(this.gameObject);
+
+        }
 	
 	}
 
-	void checkForPlayer() {
+    private void onHit()
+    {
+        health -= 20;
+    }
 
-		//kommt noch.
+	void OnTriggerEnter2D(Collider2D collider){
 
-	}
+        if (collider.tag == "Box")
+        {
+            moveSpeed *= -1;
+        }
 
-	void OnCollisionEnter2D(Collision2D col){
-		
-		if (col.gameObject.tag == "Box") {
+        if (collider.gameObject.tag == "BulletPlayer")
+        {
+            onHit();
+        }
 
-			//moveSpeed *= -1;
-
-			transform.RotateAround (transform.position, transform.up, 180f);
-
-
-		}
-
-		if (col.gameObject.tag == "Player") {
-			
-			Destroy(col.gameObject);
-			
-		}
-
-	}
+    }
 	
 }
 

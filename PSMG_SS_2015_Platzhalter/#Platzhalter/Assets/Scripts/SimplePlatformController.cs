@@ -114,9 +114,8 @@ public class SimplePlatformController : MonoBehaviour {
             Application.LoadLevel("BossRoom");
         }
 
-        if (player.gameObject.tag == "Enemy")
+        if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
-            Debug.Log("penis");
             onHit();        
         }
     }

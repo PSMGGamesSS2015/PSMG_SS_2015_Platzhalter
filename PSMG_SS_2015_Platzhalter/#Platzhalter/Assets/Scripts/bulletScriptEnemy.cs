@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bulletScript : MonoBehaviour {
+public class bulletScriptEnemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,11 +12,10 @@ public class bulletScript : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnTriggerEnter2D(Collider2D collider){
-		if (collider.tag == "Ground") {
-			Destroy (this.gameObject);
-		}
-        if (collider.tag == "Enemy")
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
         {
             foreach (Transform childTransform in this.transform)
             {
@@ -24,5 +23,6 @@ public class bulletScript : MonoBehaviour {
             }
             Destroy(this.gameObject);
         }
-	}
+    
+    }
 }

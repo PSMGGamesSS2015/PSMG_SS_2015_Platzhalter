@@ -14,7 +14,11 @@ public class bulletScript : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D collider){
 		if (collider.tag == "Ground") {
-			Destroy (this.gameObject);
+			foreach (Transform childTransform in this.transform)
+			{
+				Destroy(childTransform.gameObject);
+			}
+			Destroy(this.gameObject);
 		}
         if (collider.tag == "Enemy")
         {

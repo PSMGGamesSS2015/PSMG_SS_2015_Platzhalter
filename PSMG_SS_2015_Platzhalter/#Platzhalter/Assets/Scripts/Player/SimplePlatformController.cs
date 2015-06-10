@@ -21,7 +21,6 @@ public class SimplePlatformController : MonoBehaviour {
 
 	public AudioSource jumpSound;
 
-	public Image game_over;
 
 	private int health;
 
@@ -29,7 +28,6 @@ public class SimplePlatformController : MonoBehaviour {
 	void Start() {
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
-		game_over.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -42,10 +40,6 @@ public class SimplePlatformController : MonoBehaviour {
             jump = true;
         }
 
-        if (health == 0)
-        {
-            Application.LoadLevel("NewScene");
-        }
     }
 
     void FixedUpdate()

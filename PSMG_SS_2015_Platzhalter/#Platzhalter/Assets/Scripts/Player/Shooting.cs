@@ -9,7 +9,7 @@ public class Shooting : MonoBehaviour {
     private float damage = 10;
     private bool facingRight = true;
     public GameObject projectile;
-	public AudioSource shootSound;
+	public AudioSource shootSoundW1,shootSoundW2;
 	private int weapon;
 	private GameObject bullet;
 	private GameObject bullet_weapon2_1,bullet_weapon2_2;
@@ -58,7 +58,7 @@ public class Shooting : MonoBehaviour {
             bullet.transform.RotateAround(transform.position, transform.up, 180f);
         }
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
-		shootSound.Play ();
+		shootSoundW1.Play ();
 		Destroy (bullet.gameObject, 0.6f);
 	}
 	private void fireWeaponTwo(){
@@ -66,7 +66,7 @@ public class Shooting : MonoBehaviour {
 		bullet_weapon2_1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		bullet_weapon2_2 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
 		bullet_weapon2_2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
-		shootSound.Play ();
+		shootSoundW2.Play ();
 	
 		Destroy(bullet_weapon2_1.gameObject, 1);
 		Destroy(bullet_weapon2_2.gameObject,1);
@@ -74,13 +74,11 @@ public class Shooting : MonoBehaviour {
 	private void switchToWeaponOne(){
 		weapon=1;
 		vertical = 0f;
-		shootSound.pitch=1f;
 		ui_controller.GetComponent<UIScript> ().switch_w2_w1 ();
 	}
 	private void switchToWeaponTwo(){
 		weapon=2;
 		vertical = 9f;
-		shootSound.pitch=0.4f;
 		ui_controller.GetComponent<UIScript> ().switch_w1_w2 ();
 	}
 

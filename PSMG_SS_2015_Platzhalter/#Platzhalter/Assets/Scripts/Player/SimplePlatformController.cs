@@ -19,7 +19,7 @@ public class SimplePlatformController : MonoBehaviour {
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
-	public AudioSource jumpSound;
+	public AudioSource jumpSound, deathSound;
 
 	private bool god;
 
@@ -99,20 +99,24 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (health <= 0)
         {
-            Destroy(this.gameObject);
-            Application.LoadLevel("Game Over");
+			deathSound.Play();
+
+			Destroy(this.gameObject);
+				Application.LoadLevel("Game Over");
+			
         }
 	}
-	public void fallingToDeath(){
-		health = 0;
-	}
+
 
     void OnTriggerEnter2D(Collider2D player)
     {
         if (player.gameObject.tag == "DeathZone")
         {
-            Application.LoadLevel("Game Over");
-        }
+			deathSound.Play ();
+
+				Application.LoadLevel("Game Over");
+			
+		}
 
         if (player.gameObject.tag == "Goal")
         {
@@ -124,5 +128,8 @@ public class SimplePlatformController : MonoBehaviour {
             onHit();        
         }
     }
+	IEnumerator waitfordeath(){
+		yield return new WaitForSeconds(3);
+	}
 
 }

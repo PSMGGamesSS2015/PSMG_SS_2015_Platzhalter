@@ -122,6 +122,7 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (player.gameObject.tag == "Goal")
         {
+			Destroy (GameObject.Find("LevelSelector").gameObject);
             Application.LoadLevel("Level 1 Boss");
         }
 

@@ -70,7 +70,7 @@ public class Shooting : MonoBehaviour {
         }
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		shootSoundW1.Play ();
-		Destroy (bullet.gameObject, 0.6f);
+		Destroy (bullet.gameObject, 0.8f);
 	}
 	private void fireWeaponTwo(){
 		bullet_weapon2_1 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;

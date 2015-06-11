@@ -8,21 +8,22 @@ public class GorillaBossScript : MonoBehaviour {
 	public Vector3 targetMiddlePosition;
 	public Vector3 targetMiddleTopPosition;
 
+
 	private Vector3 targetAngles;
 	public float smooth = 1f;
 
 	public float moveSpeed = 5f;
 	
 	//Bullet
-	public GameObject projectile;
+	public GameObject projectileStraight,projectileCurve;
 	private GameObject bullet;
-	private float distance= 0.7f;
+	private float distance= 1f;
 	private float speed = -25f;
 	private float vertical = 0f;
 
-	private float health = 200;
+	private float health = 300;
 
-	private float rotation=240;
+	private float rotation=180;
 	private float zposition=-13;
 
 	void Start()
@@ -101,32 +102,46 @@ public class GorillaBossScript : MonoBehaviour {
 	}
 
 	private void fireStraight(){
-		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
+		bullet = Instantiate (projectileStraight,pos , transform.rotation) as GameObject;
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		Destroy(bullet.gameObject, distance);
 	}
 
-	private void fireArc(){
-		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-4,-8), Random.Range(15f,20f)));
+	private void fireArcLeft(){
+		Vector3 pos = new Vector3 (transform.position.x + 2, transform.position.y, transform.position.z);
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-4,-8), 12));
 		Destroy(bullet.gameObject, 3f);
-		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-10), Random.Range(20f,25f)));
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-10), 15));
 		Destroy(bullet.gameObject, 3f);
-		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-10,-12), Random.Range(25f,30f)));
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-10,-12), 18));
+		Destroy(bullet.gameObject, 3f);
+	}
+	private void fireArcRight(){
+		Vector3 pos = new Vector3 (transform.position.x - 2, transform.position.y, transform.position.z);
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-4,-8), 12));
+		Destroy(bullet.gameObject, 3f);
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-10), 15));
+		Destroy(bullet.gameObject, 3f);
+		bullet = Instantiate (projectileCurve, pos, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-10,-12), 18));
 		Destroy(bullet.gameObject, 3f);
 	}
 
 	IEnumerator shootStraightRAndWait() {
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 
 		rightArc ();
 
@@ -134,13 +149,13 @@ public class GorillaBossScript : MonoBehaviour {
 
 	IEnumerator shootArcRAndWait() {
 		
-		yield return new WaitForSeconds(1);
-		fireArc();
-		yield return new WaitForSeconds(2);
-		fireArc();
-		yield return new WaitForSeconds(2);
-		fireArc();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(0.8f);
+		fireArcLeft();
+		yield return new WaitForSeconds(1.3f);
+		fireArcLeft();
+		yield return new WaitForSeconds(1.3f);
+		fireArcLeft();
+		yield return new WaitForSeconds(1.3f);
 
 		moveLeft ();
 
@@ -148,13 +163,13 @@ public class GorillaBossScript : MonoBehaviour {
 
 	IEnumerator shootStraightLAndWait() {
 		
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		fireStraight ();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		
 		leftArc();
 		
@@ -162,21 +177,21 @@ public class GorillaBossScript : MonoBehaviour {
 	
 	IEnumerator shootArcLAndWait() {
 		
-		yield return new WaitForSeconds(1);
-		fireArc();
-		yield return new WaitForSeconds(2);
-		fireArc();
-		yield return new WaitForSeconds(2);
-		fireArc();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(0.8f);
+		fireArcRight();
+		yield return new WaitForSeconds(1.3f);
+		fireArcRight();
+		yield return new WaitForSeconds(1.3f);
+		fireArcRight();
+		yield return new WaitForSeconds(1.3f);
 		
-		moveMiddle();
+		moveRight();
 		
 	}
 
 	IEnumerator waitAtBeginning(){
 
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1f);
 
 		rightStraight ();
 
@@ -185,11 +200,18 @@ public class GorillaBossScript : MonoBehaviour {
 	IEnumerator moveLeftAndWait(){
 		
 		var pointA = transform.position;
-		var pointB = targetLeftPosition;
+		var pointC = targetLeftPosition;
+		var pointB = targetMiddleTopPosition;
 
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 
-		yield return new WaitForSeconds(2);
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
+		yield return StartCoroutine (MoveObject (transform, pointB, pointC, 0.5f));
+
+		transform.RotateAround (point, Vector3.up, rotation);
+		transform.position = new Vector3 (112, 3, -9);
+
+		yield return new WaitForSeconds(1.2f);
 		leftStraight ();
 		
 	}
@@ -197,11 +219,18 @@ public class GorillaBossScript : MonoBehaviour {
 	IEnumerator moveRightAndWait(){
 		
 		var pointA = transform.position;
-		var pointB = targetRightPosition;
+		var pointC = targetRightPosition;
+		var pointB = targetMiddleTopPosition;
+
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
-		
-		yield return new WaitForSeconds(2);
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
+		yield return StartCoroutine (MoveObject (transform, pointB, pointC, 0.5f));
+
+		transform.RotateAround (point, Vector3.up, rotation);
+		transform.position = new Vector3 (128, 3, -8);
+
+		yield return new WaitForSeconds(1.2f);
 		rightStraight ();
 		
 	}

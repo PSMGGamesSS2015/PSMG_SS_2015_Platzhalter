@@ -24,21 +24,21 @@ public class TitleScreenScript : MonoBehaviour {
 			if(m_isAxisInUse == false)
 			{
 				float axis = Input.GetAxis ("Vertical");
-				if (axis < 0) {
-					if(selection<3){
-						selection++;
-						checkSelection();
-						Debug.Log ("selectiondown");
-						StartCoroutine (wait ());
-					}
-				} else if (axis > 0) {
-					if(selection>1){
-						selection--;
-						checkSelection();
-						Debug.Log ("selectionup");
-						StartCoroutine (wait ());
-					}
-				}
+		if (axis < 0) {
+			if(selection<3){
+				selection++;
+				checkSelection();
+				Debug.Log ("selectiondown");
+				StartCoroutine (wait ());
+			}
+		} else if (axis > 0) {
+			if(selection>1){
+				selection--;
+				checkSelection();
+				Debug.Log ("selectionup");
+				StartCoroutine (wait ());
+			}
+		}
 				m_isAxisInUse = true;
 			}
 		}
@@ -58,15 +58,15 @@ public class TitleScreenScript : MonoBehaviour {
 	private void checkSelection(){
 		switch (selection) {
 		case 1:
-			selector.rectTransform.anchoredPosition=  new Vector2(-430,20);
+			selector.rectTransform.anchoredPosition=  new Vector2(-460,60);
 			Debug.Log ("selection1");
 			break;
 		case 2:
-			selector.rectTransform.anchoredPosition= new Vector2(-430,-150);
+			selector.rectTransform.anchoredPosition= new Vector2(-460,-160);
 			Debug.Log ("selection2");
 			break;
 		case 3:
-			selector.rectTransform.anchoredPosition=new Vector2 (-430,-330);
+			selector.rectTransform.anchoredPosition=new Vector2 (-460,-360);
 			Debug.Log ("selection3");
 			break;
 		}

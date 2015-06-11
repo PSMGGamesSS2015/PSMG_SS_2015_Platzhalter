@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class Shooting : MonoBehaviour {
 
     private float speed = 25f;
@@ -13,6 +14,8 @@ public class Shooting : MonoBehaviour {
 	private int weapon;
 	private GameObject bullet;
 	private GameObject bullet_weapon2_1,bullet_weapon2_2;
+	private float timer;
+	private float fireRate=0.3f;
 
 	public GameObject ui_controller;
 
@@ -28,16 +31,24 @@ public class Shooting : MonoBehaviour {
         {
 			switch(weapon){
 			case 1:
-				fireWeaponOne();
+				if(Input.GetButton("Fire1") && timer <=0){
+					fireWeaponOne();
+					timer = fireRate;
+				}
+
+
 				break;
 			case 2:
-				fireWeaponTwo();
+				if(Input.GetButton("Fire1") && timer <=0){
+					fireWeaponTwo();
+					timer = fireRate;
+				}
 				break;
 			}
 
-
+		
         }
-
+		timer -= Time.deltaTime;
         if (Input.GetButtonDown("Fire2"))
         {
             if (weapon==2)

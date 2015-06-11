@@ -21,7 +21,7 @@ public class GorillaBossScript : MonoBehaviour {
 	private float speed = -25f;
 	private float vertical = 0f;
 
-	private float health = 300;
+	private float health = 500;
 
 	private float rotation=180;
 	private float zposition=-13;
@@ -83,11 +83,11 @@ public class GorillaBossScript : MonoBehaviour {
 				
 	}
 
-	private void moveMiddle(){
+	/*private void moveMiddle(){
 		
 		StartCoroutine(moveMiddleAndWait());
 				
-	}
+	}*/
 
 	private void groundStomp(){
 		
@@ -185,7 +185,7 @@ public class GorillaBossScript : MonoBehaviour {
 		fireArcRight();
 		yield return new WaitForSeconds(1.3f);
 		
-		moveRight();
+		groundStomp();
 		
 	}
 
@@ -219,13 +219,13 @@ public class GorillaBossScript : MonoBehaviour {
 	IEnumerator moveRightAndWait(){
 		
 		var pointA = transform.position;
-		var pointC = targetRightPosition;
-		var pointB = targetMiddleTopPosition;
+		var pointB/*C*/ = targetRightPosition;
+		//var pointB = targetMiddleTopPosition;
 
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		
 		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
-		yield return StartCoroutine (MoveObject (transform, pointB, pointC, 0.5f));
+		//yield return StartCoroutine (MoveObject (transform, pointB, pointC, 0.5f));
 
 		transform.RotateAround (point, Vector3.up, rotation);
 		transform.position = new Vector3 (128, 3, -8);
@@ -235,31 +235,32 @@ public class GorillaBossScript : MonoBehaviour {
 		
 	}
 
-	IEnumerator moveMiddleAndWait(){
+	/*IEnumerator moveMiddleAndWait(){
 		
 		var pointA = transform.position;
 		var pointB = targetMiddlePosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 		
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1.2f);
 		groundStomp ();
 		
-	}
+	}*/
 
 	IEnumerator moveMiddleTopAndWait(){
 		
 		var pointA = transform.position;
 		var pointB = targetMiddleTopPosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 		
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
+		pointA = transform.position;
 		pointB = targetMiddlePosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1.2f);
 		moveRight ();
 		
 	}

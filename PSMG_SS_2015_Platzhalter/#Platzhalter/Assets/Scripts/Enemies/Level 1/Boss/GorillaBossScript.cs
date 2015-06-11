@@ -20,6 +20,11 @@ public class GorillaBossScript : MonoBehaviour {
 	private float speed = -25f;
 	private float vertical = 0f;
 
+	private float health = 200;
+
+	private float rotation=240;
+	private float zposition=-13;
+
 	void Start()
 	
 	{	
@@ -29,7 +34,15 @@ public class GorillaBossScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if (health <= 0)
+		{
+			foreach (Transform childTransform in this.transform)
+			{
+				Destroy(childTransform.gameObject);
+			}
+			Destroy(this.gameObject);
+			Application.LoadLevel("Level Select");
+		}
 
 	}
 
@@ -95,7 +108,13 @@ public class GorillaBossScript : MonoBehaviour {
 
 	private void fireArc(){
 		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-8), Random.Range(10f,14f)));
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-4,-8), Random.Range(15f,20f)));
+		Destroy(bullet.gameObject, 3f);
+		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-6,-10), Random.Range(20f,25f)));
+		Destroy(bullet.gameObject, 3f);
+		bullet = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-10,-12), Random.Range(25f,30f)));
 		Destroy(bullet.gameObject, 3f);
 	}
 
@@ -226,6 +245,19 @@ public class GorillaBossScript : MonoBehaviour {
 			yield return null; 
 		}
 	}
+	private void onHit()
+	{
+		health -= 20;
+	}
+	
+	void OnTriggerEnter2D(Collider2D collider){
 
+		
+		if (collider.gameObject.tag == "BulletPlayer")
+		{
+			onHit();
+		}
+		
+	}
 
 }

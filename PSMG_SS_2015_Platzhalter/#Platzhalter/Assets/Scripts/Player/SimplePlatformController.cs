@@ -22,6 +22,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public AudioSource jumpSound, deathSound;
 
 	private bool god;
+	private bool pause;
 
 
 	private int health;
@@ -36,11 +37,11 @@ public class SimplePlatformController : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jump = true;
         }
+
 		//Godmode shenanigans
 
 			if (Input.GetKey (KeyCode.G) && Input.GetKey (KeyCode.LeftShift)) {
@@ -51,6 +52,7 @@ public class SimplePlatformController : MonoBehaviour {
 			if (Input.GetButtonDown ("Jump") && god) {
 				jump=true;
 			}
+
     }
 
     void FixedUpdate()

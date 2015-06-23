@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 1a64f8a2e2f67f14d933e093f0c51729
+timeCreated: 1434043997
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DH_Levelselect_0
+    21300002: DH_Levelselect_1
+    21300004: DH_Levelselect_2
+    21300006: DH_Levelselect_3
+    21300008: DH_Levelselect_4
+    21300010: DH_Levelselect_5
+    21300012: DH_Levelselect_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DH_Levelselect_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 375
+        width: 222
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 375
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_2
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 92
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 91
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_4
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 83
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_5
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 381
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DH_Levelselect_6
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 370
+        width: 221
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

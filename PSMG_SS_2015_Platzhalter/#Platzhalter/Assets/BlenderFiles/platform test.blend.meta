@@ -42,6 +42,8 @@ ModelImporter:
     100068: tree_MeshPart1
     100070: tree_MeshPart2
     100072: tree_MeshPart3
+    100074: leaves
+    100076: tree_000
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -79,6 +81,8 @@ ModelImporter:
     400068: tree_MeshPart1
     400070: tree_MeshPart2
     400072: tree_MeshPart3
+    400074: leaves
+    400076: tree_000
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -109,6 +113,12 @@ ModelImporter:
     2300054: tree_MeshPart1
     2300056: tree_MeshPart2
     2300058: tree_MeshPart3
+    2300060: leaves
+    2300062: tree_000
+    2300064: tree_001
+    2300066: tree_002
+    2300068: tree_003
+    2300070: tree_004
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -139,6 +149,12 @@ ModelImporter:
     3300054: tree_MeshPart1
     3300056: tree_MeshPart2
     3300058: tree_MeshPart3
+    3300060: leaves
+    3300062: tree_000
+    3300064: tree_001
+    3300066: tree_002
+    3300068: tree_003
+    3300070: tree_004
     4300000: tree_005_MeshPart0
     4300002: tree_005_MeshPart1
     4300004: tree_005_MeshPart2
@@ -169,6 +185,12 @@ ModelImporter:
     4300054: Cube_002
     4300056: Cube_001
     4300058: Cube
+    4300060: tree_004
+    4300062: tree_003
+    4300064: tree_000
+    4300066: tree_002
+    4300068: tree_001
+    4300070: leaves
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -39,7 +39,7 @@ public class LevelSelectScript : MonoBehaviour {
 		}  
 		
 		
-		if (Input.GetButtonDown ("Submit")) {
+		if (Input.GetButtonDown ("Submit")||Input.GetButtonDown("Fire1")||Input.GetButtonDown("Jump")) {
 
 			if (selection == 1) {
 				Application.LoadLevel ("Level 1");

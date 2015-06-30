@@ -91,13 +91,13 @@ public class SimplePlatformController : MonoBehaviour {
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
 		}
-		/*if(Input.GetKeyDown("Fire3")){
+		if(Input.GetButtonDown("Fire3")){
 			if(facingRight){
 			rb2d.AddForce(new Vector2(15000f,0f));
 			}
 			else 
 				rb2d.AddForce(new Vector2(-15000f,0f));
-			}*/
+			}
     }
 
     void Flip()

@@ -4,10 +4,10 @@ using System.Collections;
 public class MonkeyEnemy : MonoBehaviour {
 	private float health = 30f;
     private GameObject item;
-    public GameObject healthUp;
+    private GameObject healthUp;
 	// Use this for initialization
 	void Start () {
-	
+		healthUp = GameObject.Find ("HealthUp");
 	}
 	
 	// Update is called once per frame

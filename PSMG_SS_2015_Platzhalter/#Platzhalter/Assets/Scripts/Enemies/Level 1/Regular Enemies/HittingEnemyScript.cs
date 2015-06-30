@@ -6,11 +6,11 @@ public class HittingEnemyScript : MonoBehaviour {
 	private float moveSpeed = 3;
     private float health = 50;
     private GameObject item;
-    public GameObject healthUp;
+    private GameObject healthUp;
 
 	// Use this for initialization
 	void Start () {
-	
+		healthUp = GameObject.Find ("HealthUp");
 	}
 	
 	// Update is called once per frame

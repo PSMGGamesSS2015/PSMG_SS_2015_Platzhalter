@@ -21,9 +21,10 @@ public class GorillaBossScript : MonoBehaviour {
 	private float speed = -25f;
 	private float vertical = 0f;
 
-	private float health = 500;
+	private float health = 800;
 
 	private float rotation=180;
+	private float rotation2=90;
 	private float zposition=-13;
 
 	void Start()
@@ -244,18 +245,6 @@ public class GorillaBossScript : MonoBehaviour {
 		
 	}
 
-	/*IEnumerator moveMiddleAndWait(){
-		
-		var pointA = transform.position;
-		var pointB = targetMiddlePosition;
-		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
-		
-		yield return new WaitForSeconds(1.2f);
-		groundStomp ();
-		
-	}*/
-
 	IEnumerator moveMiddleTopAndWait(){
 		
 		var pointA = transform.position;
@@ -266,7 +255,10 @@ public class GorillaBossScript : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		pointA = transform.position;
 		pointB = targetMiddlePosition;
-		
+
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//GameObject.Find ("gorilla 2").transform.RotateAround (point, Vector3.up, rotation2);
+
 		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 
 		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
@@ -279,6 +271,7 @@ public class GorillaBossScript : MonoBehaviour {
 		bullet.transform.RotateAround(transform.position, transform.up, 180f);
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(-speed, vertical));
 		Destroy(bullet.gameObject, distance);
+		//GameObject.Find ("gorilla 2").transform.RotateAround (point, Vector3.up, -rotation2);
 
 		yield return new WaitForSeconds(1.2f);
 

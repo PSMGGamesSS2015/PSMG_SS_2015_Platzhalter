@@ -75,8 +75,10 @@ public class Shooting : MonoBehaviour {
 	}
 	private void fireWeaponTwo(){
 		bullet_weapon2_1 = Instantiate (projectile2, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_1.transform.RotateAround(transform.position, transform.up, 180f);
 		bullet_weapon2_1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
 		bullet_weapon2_2 = Instantiate (projectile2, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_1.transform.RotateAround(transform.position, transform.up, 180f);
 		bullet_weapon2_2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
 		shootSoundW2.Play ();
 	

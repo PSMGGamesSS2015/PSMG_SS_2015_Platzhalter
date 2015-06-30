@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour {
     private float damage = 10;
     private bool facingRight = true;
     public GameObject projectile;
+	public GameObject projectile2;
 	public AudioSource shootSoundW1,shootSoundW2;
 	private int weapon;
 	private GameObject bullet;
@@ -73,9 +74,9 @@ public class Shooting : MonoBehaviour {
 		Destroy (bullet.gameObject, 0.8f);
 	}
 	private void fireWeaponTwo(){
-		bullet_weapon2_1 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_1 = Instantiate (projectile2, transform.position, transform.rotation) as GameObject;
 		bullet_weapon2_1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, vertical));
-		bullet_weapon2_2 = Instantiate (projectile, transform.position, transform.rotation) as GameObject;
+		bullet_weapon2_2 = Instantiate (projectile2, transform.position, transform.rotation) as GameObject;
 		bullet_weapon2_2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, -vertical));
 		shootSoundW2.Play ();
 	

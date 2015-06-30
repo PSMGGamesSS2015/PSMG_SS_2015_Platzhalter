@@ -109,6 +109,15 @@ public class SimplePlatformController : MonoBehaviour {
         }
 	}
 
+    private void collectHealth()
+    {
+        if (health < 100)
+        {
+            health += 20;
+        }
+        UIController.GetComponent<UIScript>().update_life(health);
+    }
+
 
     void OnTriggerEnter2D(Collider2D player)
     {
@@ -129,6 +138,11 @@ public class SimplePlatformController : MonoBehaviour {
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
             onHit();        
+        }
+
+        if(player.gameObject.tag == "HealthUp")
+        {
+            collectHealth(); 
         }
     }
 	IEnumerator waitfordeath(){

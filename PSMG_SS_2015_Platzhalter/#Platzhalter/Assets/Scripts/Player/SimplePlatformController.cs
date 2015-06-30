@@ -6,6 +6,7 @@ public class SimplePlatformController : MonoBehaviour {
 
     private bool facingRight = true;
     private bool jump = false;
+	public Animator anim;
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
@@ -31,6 +32,7 @@ public class SimplePlatformController : MonoBehaviour {
 	void Start() {
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 	
 	// Update is called once per frame
@@ -58,7 +60,7 @@ public class SimplePlatformController : MonoBehaviour {
     void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-        //anim.SetFloat("Speed", Mathf.Abs(h));
+        anim.SetFloat("Walking", Mathf.Abs(h));
 
         if (h * rb2d.velocity.x < maxSpeed)
         {
@@ -86,6 +88,9 @@ public class SimplePlatformController : MonoBehaviour {
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
+		if (Input.GetButtonUp ("Horizontal")) {
+			anim.SetFloat("Walking",0f);
+		}
     }
 
     void Flip()

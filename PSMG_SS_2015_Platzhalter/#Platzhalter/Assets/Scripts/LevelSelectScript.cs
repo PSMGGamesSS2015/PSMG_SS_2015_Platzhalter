@@ -9,7 +9,7 @@ public class LevelSelectScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		selection = 1;
-
+		checkSelection ();
 	}
 	
 	// Update is called once per frame
@@ -52,10 +52,10 @@ public class LevelSelectScript : MonoBehaviour {
 		private void checkSelection(){
 			switch (selection) {
 			case 1:
-				selector.rectTransform.anchoredPosition=  new Vector2(-490,230);
+				selector.rectTransform.anchoredPosition=  new Vector2(-560,76);
 				break;
 			case 2:
-				selector.rectTransform.anchoredPosition= new Vector2(0,170);
+				selector.rectTransform.anchoredPosition= new Vector2(-3,169);
 
 				break;
 

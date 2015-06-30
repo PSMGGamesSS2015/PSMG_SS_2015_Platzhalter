@@ -91,6 +91,13 @@ public class SimplePlatformController : MonoBehaviour {
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
 		}
+		/*if(Input.GetKeyDown("Fire3")){
+			if(facingRight){
+			rb2d.AddForce(new Vector2(15000f,0f));
+			}
+			else 
+				rb2d.AddForce(new Vector2(-15000f,0f));
+			}*/
     }
 
     void Flip()
@@ -113,7 +120,12 @@ public class SimplePlatformController : MonoBehaviour {
 			
         }
 	}
-
+	void onHeal(){
+		if (health < 100) {
+			health+=20;
+		}
+		UIController.GetComponent<UIScript> ().update_life (health);
+	}
 
     void OnTriggerEnter2D(Collider2D player)
     {
@@ -135,6 +147,9 @@ public class SimplePlatformController : MonoBehaviour {
         {
             onHit();        
         }
+		if (player.gameObject.tag == "HealthUp") {
+			onHeal();
+		}
     }
 	IEnumerator waitfordeath(){
 		yield return new WaitForSeconds(3);

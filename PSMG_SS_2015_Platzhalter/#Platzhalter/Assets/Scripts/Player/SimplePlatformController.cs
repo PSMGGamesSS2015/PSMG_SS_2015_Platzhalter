@@ -113,7 +113,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public void onHit(){
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
-		GamePad.SetVibration (PlayerIndex, 1,1);
+		GamePad.SetVibration (0, 1f,1f);
         if (health <= 0)
         {
 			deathSound.Play();

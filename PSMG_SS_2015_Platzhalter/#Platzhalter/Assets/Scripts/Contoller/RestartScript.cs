@@ -22,12 +22,13 @@ public class RestartScript : MonoBehaviour {
 
 	}
 	void restart(){
-		if(scene==1){
-			Application.LoadLevel("Level 1");
+		if (scene == 1) {
+			Application.LoadLevel ("Level 1");
 			
-		}
-		else if(scene==2){
+		} else if (scene == 2) {
 			Application.LoadLevel ("Level 1 Boss");
+		} else if (scene == 3) {
+			Application.LoadLevel("Level 2");
 		}
 	}
 }

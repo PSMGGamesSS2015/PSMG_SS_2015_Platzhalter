@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class SimplePlatformController : MonoBehaviour {
 
@@ -42,6 +43,8 @@ public class SimplePlatformController : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jump = true;
+			anim.SetBool("Jump",true);
+			jumpSound.Play ();
         }
 
 		//Godmode shenanigans
@@ -83,10 +86,10 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (jump)
         {
-            //anim.SetTrigger("Jump");
-			//jumpSound.Play ();
+
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+			anim.SetBool("Jump",false);
         }
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
@@ -110,7 +113,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public void onHit(){
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
-
+		GamePad.SetVibration (PlayerIndex, 1,1);
         if (health <= 0)
         {
 			deathSound.Play();

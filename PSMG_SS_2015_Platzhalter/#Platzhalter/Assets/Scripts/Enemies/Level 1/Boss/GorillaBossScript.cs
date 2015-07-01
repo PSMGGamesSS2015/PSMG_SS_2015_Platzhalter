@@ -43,6 +43,7 @@ public class GorillaBossScript : MonoBehaviour {
 				Destroy(childTransform.gameObject);
 			}
 			Destroy(this.gameObject);
+			Destroy (GameObject.Find("LevelSelector").gameObject);
 			Application.LoadLevel("Level Select");
 		}
 

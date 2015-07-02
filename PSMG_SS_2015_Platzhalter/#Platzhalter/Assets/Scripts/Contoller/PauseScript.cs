@@ -11,6 +11,7 @@ public class PauseScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Submit")) {
+			pause = !pause;
 			if(pause){
 				Time.timeScale = 0;
 				GameObject.Find("barrel").GetComponent<Shooting>().enabled=false;
@@ -19,7 +20,7 @@ public class PauseScript : MonoBehaviour {
 				Time.timeScale = 1;
 				GameObject.Find("barrel").GetComponent<Shooting>().enabled=true;
 			}
-			pause = !pause;
+			GameObject.Find ("UI_Controller").GetComponent<UIScript> ().togglePause();
 			
 		}
 	}

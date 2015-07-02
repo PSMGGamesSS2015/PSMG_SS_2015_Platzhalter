@@ -24,7 +24,7 @@ public class MonkeyEnemy : MonoBehaviour {
 
             if (i == 1)
             {
-                item = Instantiate(healthUp, transform.position, transform.rotation) as GameObject;
+				item = Instantiate(healthUp, transform.position,  Quaternion.identity) as GameObject;
             }
 
 			foreach (Transform childTransform in this.transform)

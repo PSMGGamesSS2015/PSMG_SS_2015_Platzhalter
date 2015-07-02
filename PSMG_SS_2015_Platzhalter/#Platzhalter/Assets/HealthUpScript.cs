@@ -12,7 +12,9 @@ public class HealthUpScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.Rotate (transform.up, angle);
+
+		transform.Rotate (transform.up, angle);
+		
 		Vector3 newScale = Vector3.one;
 		float sin = (maximalScale-minimalScale)*(Mathf.Abs (Mathf.Sin (Time.timeSinceLevelLoad)));
 		newScale *= minimalScale+ sin;
@@ -27,6 +29,9 @@ public class HealthUpScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider){
 		if (collider.gameObject.tag == "Player") {
 			destroyItem();
+		}
+		if (collider.gameObject.tag == "Ground") {
+			this.GetComponent<Rigidbody2D>().isKinematic= true;
 		}
 	}
 }

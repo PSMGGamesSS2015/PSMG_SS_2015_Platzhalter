@@ -41,7 +41,7 @@ public class GorillaBossScript : MonoBehaviour {
 	void Update () {
 		if (health <= 0)
 		{
-			item = Instantiate(star, new Vector3(transform.position.x,transform.position.y,0), transform.rotation) as GameObject;
+			item = Instantiate(star, new Vector3(117,10,-5),  Quaternion.identity) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);

@@ -69,7 +69,7 @@ public class SimplePlatformController : MonoBehaviour {
 			if (Input.GetKey (KeyCode.G) && Input.GetKey (KeyCode.LeftShift)) {
 				god=true;
 				health=100000;
-				maxSpeed=25f;
+				maxSpeed=15f;
 			}
 			if (Input.GetButtonDown ("Jump") && god) {
 				jump=true;
@@ -103,7 +103,6 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (jump)
         {
-
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
 			anim.SetBool("Jump",false);
@@ -153,7 +152,7 @@ public class SimplePlatformController : MonoBehaviour {
 	}
 	IEnumerator ControllerRumble(){
 		GamePad.SetVibration (0, 1f,1f);
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.4f);
 		GamePad.SetVibration (0, 0, 0);
 	}
 	void onHeal(){
@@ -183,6 +182,12 @@ public class SimplePlatformController : MonoBehaviour {
         }
 		if (player.gameObject.tag == "HealthUp") {
 			onHeal();
+		}
+		if (player.gameObject.tag == "Goal2") {
+
+			Application.LoadLevel ("Level Select");
+
+			
 		}
     }
 	IEnumerator waitfordeath(){

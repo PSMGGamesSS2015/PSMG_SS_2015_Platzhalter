@@ -42,7 +42,7 @@ public class SpittingSpider : MonoBehaviour {
 			
 			if (i == 1)
 			{
-				item = Instantiate(healthUp, new Vector3(transform.position.x,transform.position.y,2.3f), transform.rotation) as GameObject;
+				item = Instantiate(healthUp, new Vector3(transform.position.x,transform.position.y,2.3f), Quaternion.identity) as GameObject;
 			}
 			
 			foreach (Transform childTransform in this.transform)

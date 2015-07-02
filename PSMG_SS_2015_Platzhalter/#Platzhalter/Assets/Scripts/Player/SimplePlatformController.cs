@@ -113,15 +113,21 @@ public class SimplePlatformController : MonoBehaviour {
 	public void onHit(){
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
-		GamePad.SetVibration (0, 1f,1f);
-        if (health <= 0)
+		StartCoroutine (ControllerRumble ());
+		if (health <= 0)
         {
-			deathSound.Play();
+			//deathSound.Play();
 
 			Destroy(this.gameObject);
 				Application.LoadLevel("Game Over");
+			GamePad.SetVibration(0,0,0);
 			
         }
+	}
+	IEnumerator ControllerRumble(){
+		GamePad.SetVibration (0, 1f,1f);
+		yield return new WaitForSeconds (0.5f);
+		GamePad.SetVibration (0, 0, 0);
 	}
 	void onHeal(){
 		if (health < 100) {

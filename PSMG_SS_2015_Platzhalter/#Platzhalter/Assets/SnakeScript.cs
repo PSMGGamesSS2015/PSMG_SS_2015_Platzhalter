@@ -54,12 +54,17 @@ public class SnakeScript : MonoBehaviour {
 		if (collider.tag == "Box") {
 			moveSpeed*=-1;
 			if(moveSpeed>0){
-				model.transform.localEulerAngles = new Vector3(270,270,0);
 
+				foreach (Transform child in this.transform)
+				{
+					child.gameObject.transform.localEulerAngles = new Vector3(270,270,0);
+				}
 			}
 			if(moveSpeed<0){
-				model.transform.localEulerAngles = new Vector3(270,90,0);
-				
+				foreach (Transform child in this.transform)
+				{
+				child.gameObject.transform.localEulerAngles = new Vector3(270,90,0);
+				}
 			}
 		}
 		

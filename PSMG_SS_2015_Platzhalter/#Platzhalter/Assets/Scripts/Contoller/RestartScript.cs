@@ -12,7 +12,9 @@ public class RestartScript : MonoBehaviour {
 	void Update () {
 		StartCoroutine (liveAgain ());
 		if(Input.GetButtonDown ("Submit")||Input.GetButtonDown("Fire1")||Input.GetButtonDown("Jump")){
-			restart();
+
+				restart();
+
 
 		}
 	}
@@ -22,13 +24,16 @@ public class RestartScript : MonoBehaviour {
 
 	}
 	void restart(){
-		if (scene == 1) {
-			Application.LoadLevel ("Level 1");
+	if (GameObject.Find ("PlayerLifes").GetComponent<LifeScript> ().lifes > 0) {
+			if (scene == 1) {
+				Application.LoadLevel ("Level 1");
 			
-		} else if (scene == 2) {
-			Application.LoadLevel ("Level 1 Boss");
-		} else if (scene == 3) {
-			Application.LoadLevel("Level 2");
-		}
+			} else if (scene == 2) {
+				Application.LoadLevel ("Level 1 Boss");
+			} else if (scene == 3) {
+				Application.LoadLevel ("Level 2");
+			}
+		} else
+			Application.LoadLevel ("TitleScreen");
 	}
 }

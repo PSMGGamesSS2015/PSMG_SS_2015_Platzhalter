@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelScript : MonoBehaviour {
-	public int lastLevelPlayed =0;
+public class LifeScript : MonoBehaviour {
+
+	public int lifes;
+
 	// Use this for initialization
 	void Start () {
-	
+		lifes = 3;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-	void Awake(){
 
 		DontDestroyOnLoad (transform.gameObject);
 	}

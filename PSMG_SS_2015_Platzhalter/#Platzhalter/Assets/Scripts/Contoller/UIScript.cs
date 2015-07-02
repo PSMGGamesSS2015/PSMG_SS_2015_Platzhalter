@@ -151,9 +151,26 @@ public class UIScript : MonoBehaviour {
 			LB_4.enabled = false;
 			LB_5.enabled = false;
 		}
+	}
 
+		public void update_lifes(int lifes){
+			if(lifes==3){
+				L_3.enabled = true;
+				L_2.enabled = false;
+				L_1.enabled = false;
+			}
+			else if(lifes==2){
+				L_3.enabled = false;
+				L_2.enabled = true;
+				L_1.enabled = false;
+			}
+			else if(lifes==1){
+				L_3.enabled = false;
+				L_2.enabled = false;
+				L_1.enabled = true;
+			}
+		}
 
 
 		
 	}
-}

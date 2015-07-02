@@ -27,20 +27,25 @@ public class SimplePlatformController : MonoBehaviour {
 	private bool pause;
 
 	private GameObject lvlCheck;
+	private GameObject lifes;
 
 	private int health;
+	
 
 	// Use this for initialization
 	void Start() {
+
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
 		lvlCheck = GameObject.Find ("LevelCheck");
+		lifes = GameObject.Find ("PlayerLifes");
 
     }
 	
 	// Update is called once per frame
     void Update()
     {
+		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -120,12 +125,16 @@ public class SimplePlatformController : MonoBehaviour {
 		if (health <= 0)
         {
 			//deathSound.Play();
+			onDeath();
 
-			Destroy(this.gameObject);
-				Application.LoadLevel("Game Over");
-			GamePad.SetVibration(0,0,0);
-			
         }
+	}
+	void onDeath(){
+		Destroy(this.gameObject);
+		Application.LoadLevel("Game Over");
+		lifes.GetComponent<LifeScript> ().lifes -= 1;
+		GamePad.SetVibration(0,0,0);
+
 	}
 	IEnumerator ControllerRumble(){
 		GamePad.SetVibration (0, 1f,1f);
@@ -143,9 +152,7 @@ public class SimplePlatformController : MonoBehaviour {
     {
         if (player.gameObject.tag == "DeathZone")
         {
-			deathSound.Play ();
-
-				Application.LoadLevel("Game Over");
+			onDeath ();
 			
 		}
 

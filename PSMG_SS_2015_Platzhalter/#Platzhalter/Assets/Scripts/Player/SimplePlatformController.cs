@@ -45,6 +45,16 @@ public class SimplePlatformController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+		if(Input.GetKeyDown (KeyCode.F1)){
+			Application.LoadLevel("Level 1");
+		}
+		if(Input.GetKeyDown (KeyCode.F2)){
+			Application.LoadLevel("Level 1 Boss");
+		}
+		if(Input.GetKeyDown (KeyCode.F3)){
+			Application.LoadLevel("Level 2");
+		}
+
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         if (Input.GetButtonDown("Jump") && grounded)

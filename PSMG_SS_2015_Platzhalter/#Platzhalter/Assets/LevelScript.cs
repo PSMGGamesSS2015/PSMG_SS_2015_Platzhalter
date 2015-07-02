@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class LevelScript : MonoBehaviour {
-	public int lastLevelPlayed =0;
+	public int lastLevelPlayed;
 	// Use this for initialization
 	void Start () {
 	

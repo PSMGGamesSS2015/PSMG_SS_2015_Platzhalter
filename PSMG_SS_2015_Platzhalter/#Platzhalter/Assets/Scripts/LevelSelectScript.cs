@@ -10,6 +10,7 @@ public class LevelSelectScript : MonoBehaviour {
 	void Start () {
 		selection = 1;
 		checkSelection ();
+		Destroy (GameObject.Find ("PlayerLifes").gameObject);
 	}
 	
 	// Update is called once per frame

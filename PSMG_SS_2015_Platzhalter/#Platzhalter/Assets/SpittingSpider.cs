@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpittingSpider : MonoBehaviour {
 
-	private float moveSpeed = -2f;
+	public float moveSpeed = -2f;
 	private float health = 30f;
 	private float speed = -25f;
 	private float vertical = 0f;
@@ -42,7 +42,7 @@ public class SpittingSpider : MonoBehaviour {
 			
 			if (i == 1)
 			{
-				item = Instantiate(healthUp, transform.position, transform.rotation) as GameObject;
+				item = Instantiate(healthUp, new Vector3(transform.position.x,transform.position.y,2.3f), transform.rotation) as GameObject;
 			}
 			
 			foreach (Transform childTransform in this.transform)

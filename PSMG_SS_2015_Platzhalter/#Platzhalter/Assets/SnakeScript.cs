@@ -28,12 +28,12 @@ public class SnakeScript : MonoBehaviour {
 		if (health <= 0)
 		{
 			int i = Random.Range(1, 5);
-			
+
 			Debug.Log(i);
 			
 			if (i == 1)
 			{
-				item = Instantiate(healthUp, transform.position, transform.rotation) as GameObject;
+				item = Instantiate(healthUp,new Vector3(transform.position.x,transform.position.y,2.3f), transform.rotation) as GameObject;
 			}
 			
 			foreach (Transform childTransform in this.transform)

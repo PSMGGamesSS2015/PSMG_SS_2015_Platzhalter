@@ -26,10 +26,13 @@ public class GorillaBossScript : MonoBehaviour {
 	private float rotation=180;
 	private float rotation2=90;
 	private float zposition=-13;
+	private GameObject item;
+	private GameObject star;
 
 	void Start()
 	
 	{	
+		star = GameObject.Find ("EndObject");
 		wait();
 
 	}
@@ -38,14 +41,13 @@ public class GorillaBossScript : MonoBehaviour {
 	void Update () {
 		if (health <= 0)
 		{
+			item = Instantiate(star, new Vector3(transform.position.x,transform.position.y,0), transform.rotation) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);
 			}
 			Destroy(this.gameObject);
-			Destroy (GameObject.Find("LevelSelector").gameObject);
-			GameObject.Find ("LevelCheck").GetComponent<LevelCheck>().levelOneDone =true;
-			Application.LoadLevel("Level Select");
+
 		}
 
 	}

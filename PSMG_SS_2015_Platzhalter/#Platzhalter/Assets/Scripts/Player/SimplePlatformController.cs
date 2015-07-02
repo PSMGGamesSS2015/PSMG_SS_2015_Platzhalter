@@ -26,6 +26,7 @@ public class SimplePlatformController : MonoBehaviour {
 	private bool god;
 	private bool pause;
 
+	private GameObject lvlCheck;
 
 	private int health;
 
@@ -33,6 +34,7 @@ public class SimplePlatformController : MonoBehaviour {
 	void Start() {
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
+		lvlCheck = GameObject.Find ("LevelCheck");
 
     }
 	
@@ -94,7 +96,8 @@ public class SimplePlatformController : MonoBehaviour {
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
 		}
-		if(Input.GetButtonDown("Fire3")){
+		//Dash
+		if(Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true){
 			if(facingRight){
 			rb2d.AddForce(new Vector2(15000f,0f));
 			}

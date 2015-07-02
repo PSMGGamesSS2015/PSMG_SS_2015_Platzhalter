@@ -44,6 +44,7 @@ public class GorillaBossScript : MonoBehaviour {
 			}
 			Destroy(this.gameObject);
 			Destroy (GameObject.Find("LevelSelector").gameObject);
+			GameObject.Find ("LevelCheck").GetComponent<LevelCheck>().levelOneDone =true;
 			Application.LoadLevel("Level Select");
 		}
 
@@ -259,7 +260,11 @@ public class GorillaBossScript : MonoBehaviour {
 
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//GameObject.Find ("gorilla 2").transform.RotateAround (point, Vector3.up, rotation2);
+		foreach (Transform child in transform) {
+			child.gameObject.transform.localEulerAngles = new Vector3 (270, 0, 0);
+			child.gameObject.transform.localScale = new Vector3(0.18f,0.1801f,0.1089f);
 
+		}
 		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 
 		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
@@ -286,6 +291,11 @@ public class GorillaBossScript : MonoBehaviour {
 		var pointB = targetMiddleTopPosition;
 		
 		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
+		foreach (Transform child in transform) {
+			child.gameObject.transform.localEulerAngles = new Vector3 (270, 270, 0);
+			child.gameObject.transform.localScale = new Vector3(0.6f,0.1801f,0.1089f);
+			
+		}
 
 		pointA = transform.position;
 		pointB = targetRightPosition;

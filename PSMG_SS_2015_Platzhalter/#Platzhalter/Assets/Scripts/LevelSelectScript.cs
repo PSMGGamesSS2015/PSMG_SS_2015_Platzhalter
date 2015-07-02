@@ -52,10 +52,10 @@ public class LevelSelectScript : MonoBehaviour {
 		private void checkSelection(){
 			switch (selection) {
 			case 1:
-				selector.rectTransform.anchoredPosition=  new Vector2(-560,76);
+				selector.rectTransform.anchoredPosition=  new Vector2(-560,78);
 				break;
 			case 2:
-				selector.rectTransform.anchoredPosition= new Vector2(-3,169);
+				selector.rectTransform.anchoredPosition= new Vector2(-2,174);
 
 				break;
 

@@ -122,6 +122,11 @@ public class SimplePlatformController : MonoBehaviour {
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
 		StartCoroutine (ControllerRumble ());
+		if (facingRight) {
+			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
+		}
+		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
+
 		if (health <= 0)
         {
 			//deathSound.Play();

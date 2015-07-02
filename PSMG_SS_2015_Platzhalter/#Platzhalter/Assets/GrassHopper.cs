@@ -1,26 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SnakeScript : MonoBehaviour {
+public class GrassHopper : MonoBehaviour {
 
-	private float moveSpeed = -3f;
-	private float health = 40f;
-	
+	private Rigidbody2D rb2d;
+	public int jumpForce;
 	private GameObject item;
 	private GameObject healthUp;
-	private GameObject model;
-
-
+	private float health = 30f;
 	// Use this for initialization
 	void Start () {
+		rb2d = GetComponent<Rigidbody2D>();
+		jumpLeft_ ();
 		healthUp = GameObject.Find ("HealthUp");
-		model = GameObject.Find ("SchlangeModel");
 	}
-	
+	void jumpLeft_(){
+		StartCoroutine (jumpLeft ());
+	}
+	void jumpRight_(){
+		StartCoroutine (jumpRight ());
+	}
+	IEnumerator jumpLeft(){
+		transform.localEulerAngles = new Vector3 (0, 0, 0);
+		rb2d.AddForce (new Vector2(300f, 400f));
+		yield return new WaitForSeconds(2.1f);
+		jumpRight_ ();
+	}
+	IEnumerator jumpRight(){
+		transform.localEulerAngles = new Vector3 (0, 180, 0);
+		rb2d.AddForce (new Vector2(-300f, 400f));
+		yield return new WaitForSeconds(2.1f);
+		jumpLeft_ ();
+		}
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (new Vector3 (moveSpeed, 0, 0) * Time.deltaTime);
-		
 		checkHealth();
 	}
 	private void checkHealth()
@@ -28,7 +41,7 @@ public class SnakeScript : MonoBehaviour {
 		if (health <= 0)
 		{
 			int i = Random.Range(1, 5);
-
+			
 			Debug.Log(i);
 			
 			if (i == 1)
@@ -44,29 +57,13 @@ public class SnakeScript : MonoBehaviour {
 			
 		}
 	}
-	
 	private void onHit(){
 		health -= 10;
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (collider.tag == "Box") {
-			moveSpeed*=-1;
-			if(moveSpeed>0){
 
-				foreach (Transform child in this.transform)
-				{
-					child.gameObject.transform.localEulerAngles = new Vector3(270,270,0);
-				}
-			}
-			if(moveSpeed<0){
-				foreach (Transform child in this.transform)
-				{
-				child.gameObject.transform.localEulerAngles = new Vector3(270,90,0);
-				}
-			}
-		}
 		
 		if (collider.gameObject.tag == "BulletPlayer")
 		{

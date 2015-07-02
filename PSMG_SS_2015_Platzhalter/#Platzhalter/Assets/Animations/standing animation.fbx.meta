@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 279d6ac8fe22bf04ebaf33aa90d27830
+timeCreated: 1435851034
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bauch
+    100004: Bone.001
+    100006: Camera
+    100008: Cube.001
+    100010: foot roll.l
+    100012: foot roll.r
+    100014: "fu\xDF"
+    100016: "fu\xDF.002"
+    100018: Head
+    100020: kanone.l
+    100022: kanone.r
+    100024: Lamp
+    100026: leg control
+    100028: leg control.002
+    100030: leg pole target.l
+    100032: leg pole target.r
+    100034: leg.ik.l
+    100036: leg.ik.r
+    100038: Neck
+    100040: Oberarm.l
+    100042: Oberarm.r
+    100044: oberes bein
+    100046: oberes bein.002
+    100048: Root
+    100050: //RootNode
+    100052: Sun
+    100054: toes control.l
+    100056: toes control.r
+    100058: unterarm.l
+    100060: unterarm.r
+    100062: unteres bein
+    100064: unteres bein.001
+    100066: zehen
+    100068: zehen.002
+    400000: Armature
+    400002: Bauch
+    400004: Bone.001
+    400006: Camera
+    400008: Cube.001
+    400010: foot roll.l
+    400012: foot roll.r
+    400014: "fu\xDF"
+    400016: "fu\xDF.002"
+    400018: Head
+    400020: kanone.l
+    400022: kanone.r
+    400024: Lamp
+    400026: leg control
+    400028: leg control.002
+    400030: leg pole target.l
+    400032: leg pole target.r
+    400034: leg.ik.l
+    400036: leg.ik.r
+    400038: Neck
+    400040: Oberarm.l
+    400042: Oberarm.r
+    400044: oberes bein
+    400046: oberes bein.002
+    400048: Root
+    400050: //RootNode
+    400052: Sun
+    400054: toes control.l
+    400056: toes control.r
+    400058: unterarm.l
+    400060: unterarm.r
+    400062: unteres bein
+    400064: unteres bein.001
+    400066: zehen
+    400068: zehen.002
+    4300000: Cube.001
+    7400000: Armature|ArmatureAction.001
+    7400002: Armature|standing animation
+    7400004: Armature|Walk_blocking
+    7400006: Cube.001|ArmatureAction.001
+    7400008: Cube.001|standing animation
+    7400010: Cube.001|Walk_blocking
+    7400012: Sun|ArmatureAction.001
+    7400014: Sun|standing animation
+    7400016: Sun|Walk_blocking
+    7400018: Lamp|ArmatureAction.001
+    7400020: Lamp|standing animation
+    7400022: Lamp|Walk_blocking
+    7400024: Camera|ArmatureAction.001
+    7400026: Camera|standing animation
+    7400028: Camera|Walk_blocking
+    9500000: //RootNode
+    13700000: Cube.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

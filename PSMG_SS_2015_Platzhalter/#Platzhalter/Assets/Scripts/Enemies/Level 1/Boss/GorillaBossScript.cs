@@ -325,6 +325,20 @@ public class GorillaBossScript : MonoBehaviour {
 	private void onHit()
 	{
 		health -= 20;
+		StartCoroutine (Blink ());
+	}
+	IEnumerator Blink(){
+		foreach (Transform child in transform) {                                                                                                                                                             
+
+			foreach (Transform chilchild in child.transform){
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = false;
+				child.gameObject.GetComponent<Renderer> ().enabled = false;
+				yield return new WaitForSeconds (0.01f);
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = true;
+				child.gameObject.GetComponent<Renderer> ().enabled = true;
+				yield return new WaitForSeconds (0.01f);
+			}
+		}
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider){

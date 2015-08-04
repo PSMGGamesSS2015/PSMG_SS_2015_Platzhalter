@@ -59,6 +59,17 @@ public class GrassHopper : MonoBehaviour {
 	}
 	private void onHit(){
 		health -= 10;
+		StartCoroutine (Blink ());
+	}
+	IEnumerator Blink(){
+		foreach (Transform child in transform) { 
+			foreach (Transform chilchild in child.transform){
+			chilchild.gameObject.GetComponent<Renderer> ().enabled = false;
+			yield return new WaitForSeconds (0.02f);
+			chilchild.gameObject.GetComponent<Renderer> ().enabled = true;
+			yield return new WaitForSeconds (0.02f);
+			}
+		}
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider)

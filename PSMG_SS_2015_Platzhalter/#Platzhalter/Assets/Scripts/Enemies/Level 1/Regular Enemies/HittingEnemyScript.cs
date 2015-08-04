@@ -46,7 +46,16 @@ public class HittingEnemyScript : MonoBehaviour {
     private void onHit()
     {
         health -= 20;
-    }
+		StartCoroutine (Blink ());
+	}
+	IEnumerator Blink(){
+		foreach (Transform child in transform) {                                                                                                                                                             
+			child.gameObject.GetComponent<Renderer> ().enabled = false;
+			yield return new WaitForSeconds (0.02f);
+			child.gameObject.GetComponent<Renderer> ().enabled = true;
+			yield return new WaitForSeconds (0.02f);
+		}
+	}
 
 	void OnTriggerEnter2D(Collider2D collider){
 

@@ -21,7 +21,7 @@ public class SimplePlatformController : MonoBehaviour {
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
-	public AudioSource jumpSound, deathSound;
+	public AudioSource jumpSound, deathSound, lifeSound;
 
 	private bool god;
 	private bool pause;
@@ -135,7 +135,7 @@ public class SimplePlatformController : MonoBehaviour {
 			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
 		}
 		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
-
+		StartCoroutine (Blink ());
 		if (health <= 0)
         {
 			//deathSound.Play();
@@ -148,7 +148,15 @@ public class SimplePlatformController : MonoBehaviour {
 		Application.LoadLevel("Game Over");
 		lifes.GetComponent<LifeScript> ().lifes -= 1;
 		GamePad.SetVibration(0,0,0);
-
+	}
+	IEnumerator Blink(){
+		GameObject model = GameObject.Find ("Cube.001");
+		for (int i = 0; i<=3; i++) {                                                                                                                                                                              
+			model.GetComponent<Renderer> ().enabled = false;
+			yield return new WaitForSeconds (0.05f);
+			model.GetComponent<Renderer> ().enabled = true;
+			yield return new WaitForSeconds (0.05f);
+		}
 	}
 	IEnumerator ControllerRumble(){
 		GamePad.SetVibration (0, 1f,1f);
@@ -159,6 +167,7 @@ public class SimplePlatformController : MonoBehaviour {
 		if (health < 100) {
 			health+=20;
 		}
+		lifeSound.Play ();
 		UIController.GetComponent<UIScript> ().update_life (health);
 	}
 
@@ -172,6 +181,8 @@ public class SimplePlatformController : MonoBehaviour {
 
         if (player.gameObject.tag == "Goal")
         {
+			float fadeTime = GameObject.Find ("EventSystem").GetComponent<Fading>().BeginFade(-1);
+			StartCoroutine( waitforfade(fadeTime));
 			Destroy (GameObject.Find("LevelSelector").gameObject);
             Application.LoadLevel("Level 1 Boss");
         }
@@ -190,8 +201,8 @@ public class SimplePlatformController : MonoBehaviour {
 			
 		}
     }
-	IEnumerator waitfordeath(){
-		yield return new WaitForSeconds(3);
+	IEnumerator waitforfade(float fadeTime){
+		yield return new WaitForSeconds(fadeTime);
 	}
 
 }

@@ -30,8 +30,6 @@ public class HealthUpScript : MonoBehaviour {
 		if (collider.gameObject.tag == "Player") {
 			destroyItem();
 		}
-		if (collider.gameObject.tag == "Ground") {
-			this.GetComponent<Rigidbody2D>().isKinematic= true;
-		}
+
 	}
 }

@@ -179,13 +179,13 @@ public class SimplePlatformController : MonoBehaviour {
 			
 		}
 
-        if (player.gameObject.tag == "Goal")
+        /*if (player.gameObject.tag == "Goal")
         {
 			float fadeTime = GameObject.Find ("EventSystem").GetComponent<Fading>().BeginFade(-1);
 			StartCoroutine( waitforfade(fadeTime));
 			Destroy (GameObject.Find("LevelSelector").gameObject);
             Application.LoadLevel("Level 1 Boss");
-        }
+        }*/
 
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
@@ -194,15 +194,13 @@ public class SimplePlatformController : MonoBehaviour {
 		if (player.gameObject.tag == "HealthUp") {
 			onHeal();
 		}
-		if (player.gameObject.tag == "Goal2") {
+		/*if (player.gameObject.tag == "Goal2") {
 
 			Application.LoadLevel ("Level Select");
 
 			
-		}
+		}*/
     }
-	IEnumerator waitforfade(float fadeTime){
-		yield return new WaitForSeconds(fadeTime);
-	}
+
 
 }

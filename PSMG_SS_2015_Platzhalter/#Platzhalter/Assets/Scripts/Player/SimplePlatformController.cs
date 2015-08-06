@@ -6,12 +6,16 @@ using XInputDotNetPure;
 public class SimplePlatformController : MonoBehaviour {
 
     private bool facingRight = true;
-    private bool jump = false;
+    public bool jump = false;
 	public Animator anim;
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     private float jumpForce = 500f;
+
+	public float climbSpeed = 5f;
+	private float climbVelocity;
+	private float gravityStore;
 
     public Transform groundCheck;
 
@@ -25,6 +29,7 @@ public class SimplePlatformController : MonoBehaviour {
 
 	private bool god;
 	private bool pause;
+	public bool onLadder;
 
 	private GameObject lvlCheck;
 	private GameObject lifes;
@@ -39,6 +44,7 @@ public class SimplePlatformController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
 		lvlCheck = GameObject.Find ("LevelCheck");
 		lifes = GameObject.Find ("PlayerLifes");
+		gravityStore = rb2d.gravityScale;
 
     }
 	
@@ -57,7 +63,7 @@ public class SimplePlatformController : MonoBehaviour {
 
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        if (Input.GetButtonDown("Jump") && grounded)
+        if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder))
         {
             jump = true;
 			anim.SetBool("Jump",true);
@@ -74,12 +80,12 @@ public class SimplePlatformController : MonoBehaviour {
 			if (Input.GetButtonDown ("Jump") && god) {
 				jump=true;
 			}
-
     }
 
     void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
+		float v = Input.GetAxis("Vertical");
         anim.SetFloat("Walking", Mathf.Abs(h));
 
         if (h * rb2d.velocity.x < maxSpeed)
@@ -91,6 +97,23 @@ public class SimplePlatformController : MonoBehaviour {
         {
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
         }
+
+		if (onLadder) {
+			rb2d.gravityScale = 0f;
+			rb2d.velocity = new Vector2(0,0);
+
+			if (v * rb2d.velocity.y < maxSpeed)
+			{
+				rb2d.AddForce(Vector2.up * v * moveForce);
+			}
+
+			if(jump){
+				StartCoroutine(jumpFromLadder());
+			}
+		}
+		if (!onLadder) {
+			rb2d.gravityScale = gravityStore;
+		}
 
         if (h > 0 && !facingRight)
         {
@@ -119,7 +142,10 @@ public class SimplePlatformController : MonoBehaviour {
 				rb2d.AddForce(new Vector2(-15000f,0f));
 			}
     }
-
+	IEnumerator jumpFromLadder(){
+		onLadder=false;
+		yield return new WaitForSeconds (1.0f);
+	}
     void Flip()
     {
         facingRight = !facingRight;
@@ -179,14 +205,6 @@ public class SimplePlatformController : MonoBehaviour {
 			
 		}
 
-        /*if (player.gameObject.tag == "Goal")
-        {
-			float fadeTime = GameObject.Find ("EventSystem").GetComponent<Fading>().BeginFade(-1);
-			StartCoroutine( waitforfade(fadeTime));
-			Destroy (GameObject.Find("LevelSelector").gameObject);
-            Application.LoadLevel("Level 1 Boss");
-        }*/
-
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
             onHit();        
@@ -194,13 +212,10 @@ public class SimplePlatformController : MonoBehaviour {
 		if (player.gameObject.tag == "HealthUp") {
 			onHeal();
 		}
-		/*if (player.gameObject.tag == "Goal2") {
 
-			Application.LoadLevel ("Level Select");
-
-			
-		}*/
     }
-
+	IEnumerator waitforfade(float fadeTime){
+		yield return new WaitForSeconds(fadeTime);
+	}
 
 }

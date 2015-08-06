@@ -86,7 +86,7 @@ public class BossSpiderScript : MonoBehaviour {
 		var pointA = transform.position;
 		var pointB = rightTopPosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed/2));
 		
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
@@ -100,7 +100,7 @@ public class BossSpiderScript : MonoBehaviour {
 		var pointA = transform.position;
 		var pointB = middleTopPosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed/2));
 		
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
@@ -129,7 +129,7 @@ public class BossSpiderScript : MonoBehaviour {
 		var pointA = transform.position;
 		var pointB = middleTopPosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed/2));
 		
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
@@ -144,7 +144,7 @@ public class BossSpiderScript : MonoBehaviour {
 		var pointA = transform.position;
 		var pointB = leftTopPosition;
 		
-		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed/2));
 		
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
@@ -210,6 +210,15 @@ public class BossSpiderScript : MonoBehaviour {
 			yield return null; 
 		}
 	}
+	void OnTriggerEnter2D(Collider2D collider){
+		
+		
+		if (collider.gameObject.tag == "BulletPlayer")
+		{
+			onHit();
+		}
+		
+	}
 	private void onHit()
 	{
 		health -= 20;
@@ -219,12 +228,16 @@ public class BossSpiderScript : MonoBehaviour {
 		foreach (Transform child in transform) {                                                                                                                                                             
 			
 			foreach (Transform chilchild in child.transform){
+				foreach (Transform chilchilchild in chilchild.transform){
+				chilchilchild.gameObject.GetComponent<Renderer> ().enabled = false;
 				chilchild.gameObject.GetComponent<Renderer> ().enabled = false;
 				child.gameObject.GetComponent<Renderer> ().enabled = false;
 				yield return new WaitForSeconds (0.01f);
+				chilchilchild.gameObject.GetComponent<Renderer>().enabled=true;
 				chilchild.gameObject.GetComponent<Renderer> ().enabled = true;
 				child.gameObject.GetComponent<Renderer> ().enabled = true;
 				yield return new WaitForSeconds (0.01f);
+				}
 			}
 		}
 	}
@@ -234,8 +247,8 @@ public class BossSpiderScript : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
 		yield return new WaitForSeconds(0.5f);
-		spawnSpiders ();
-		yield return new WaitForSeconds(0.5f);
+		//spawnSpiders ();
+		//yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
 		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();

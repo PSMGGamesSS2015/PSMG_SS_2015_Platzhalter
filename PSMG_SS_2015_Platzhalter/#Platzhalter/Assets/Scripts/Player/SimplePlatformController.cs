@@ -25,6 +25,10 @@ public class SimplePlatformController : MonoBehaviour {
     private bool grounded = true;
     private Rigidbody2D rb2d;
 
+	private Vector2 boostSpeed = new Vector2(700,0);
+	private float boostCooldown = 0.1f;
+	private bool canBoost = true;
+
 	public AudioSource jumpSound, deathSound, lifeSound;
 
 	private bool god;
@@ -69,6 +73,9 @@ public class SimplePlatformController : MonoBehaviour {
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
         }
+		if (grounded && canBoost && Input.GetKeyDown (KeyCode.LeftShift)) {
+			StartCoroutine(Boost(0.3f));
+		}
 
 		//Godmode shenanigans
 
@@ -145,6 +152,25 @@ public class SimplePlatformController : MonoBehaviour {
 	IEnumerator jumpFromLadder(){
 		onLadder=false;
 		yield return new WaitForSeconds (1.0f);
+	}
+	IEnumerator Boost(float boostDur)
+	{
+		float time = 0;
+		canBoost = false;
+		while (boostDur > time) {
+			time += Time.deltaTime;
+			if(facingRight)
+			{
+				rb2d.AddForce(boostSpeed);
+			}
+			else
+			{
+				rb2d.AddForce(-boostSpeed);
+			}
+			yield return 0;
+		}
+		yield return new WaitForSeconds (boostCooldown);
+		canBoost = true;
 	}
     void Flip()
     {

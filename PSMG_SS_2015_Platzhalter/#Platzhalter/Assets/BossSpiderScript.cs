@@ -19,10 +19,13 @@ public class BossSpiderScript : MonoBehaviour {
 	private float health = 800;
 	private GameObject item;
 	private float rotation=180;
-	private float moveSpeed = 0.7f;
+	private float moveSpeed = 0.5f;
 		//private GameObject star;
 	private GameObject player;
 	public GameObject projectileStraight;
+	public GameObject spider;
+	private GameObject spiderspawn;
+	private GameObject spiderspawn2;
 	private GameObject bullet;
 	private float speed = -25f;
 	private float distance= 3.0f;
@@ -73,7 +76,7 @@ public class BossSpiderScript : MonoBehaviour {
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
 		StartCoroutine (pattern());
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(3.5f);
 		StartCoroutine (moveRightTopAndWait());
 
 	}
@@ -116,7 +119,7 @@ public class BossSpiderScript : MonoBehaviour {
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
 		StartCoroutine (pattern());
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(3.5f);
 		StartCoroutine (moveMiddleTopAndWait2());
 		
 	}
@@ -161,7 +164,7 @@ public class BossSpiderScript : MonoBehaviour {
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
 		StartCoroutine (pattern());
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(3.5f);
 		StartCoroutine (moveLeftTopAndWait2());
 		
 	}
@@ -191,7 +194,7 @@ public class BossSpiderScript : MonoBehaviour {
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
 		
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(3.5f);
 		StartCoroutine (waitAtBeginning());
 		
 	}
@@ -228,17 +231,17 @@ public class BossSpiderScript : MonoBehaviour {
 
 	IEnumerator pattern(){
 		shootPlayer ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		spawnSpiders ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		shootPlayer ();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 	}
 	void shootPlayer(){
 		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
@@ -248,6 +251,10 @@ public class BossSpiderScript : MonoBehaviour {
 
 	}
 	void spawnSpiders(){
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
+		spiderspawn = Instantiate (spider,pos , transform.rotation) as GameObject;
+		spiderspawn.transform.localEulerAngles.Set(0,0,270);
+		spiderspawn.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(0, 0));
 
 	}
 }

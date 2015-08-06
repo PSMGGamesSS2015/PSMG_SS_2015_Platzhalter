@@ -18,12 +18,14 @@ public class BossSpiderScript : MonoBehaviour {
 
 	private float health = 800;
 	private GameObject item;
-	//private GameObject star;
+	private float rotation=180;
+	private float moveSpeed = 0.7f;
+		//private GameObject star;
 	private GameObject player;
 	public GameObject projectileStraight;
 	private GameObject bullet;
 	private float speed = -25f;
-	private float distance= 1.3f;
+	private float distance= 3.0f;
 
 
 	// Use this for initialization
@@ -34,8 +36,8 @@ public class BossSpiderScript : MonoBehaviour {
 		rightTopPosition = new Vector3 (3, 20, 0);
 		leftBottomPosition = new Vector3 (-17, 7, 0);
 		leftTopPosition = new Vector3 (-17, 20, 0);
-		star = GameObject.Find ("EndObject");
-		StartCoroutine (wait ());
+		//star = GameObject.Find ("EndObject");
+		StartCoroutine (waitAtBeginning());
 		player = GameObject.Find ("Player");
 		//star = GameObject.Find ("EndObject");
 	}
@@ -53,6 +55,148 @@ public class BossSpiderScript : MonoBehaviour {
 			
 		}
 	}
+
+	IEnumerator waitAtBeginning(){
+		
+		yield return new WaitForSeconds(1f);
+		StartCoroutine (moveRightMiddleAndWait());
+
+	}
+
+	IEnumerator moveRightMiddleAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = rightBottomPosition;
+
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		StartCoroutine (pattern());
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveRightTopAndWait());
+
+	}
+
+	IEnumerator moveRightTopAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = rightTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveMiddleTopAndWait());
+
+	}
+
+	IEnumerator moveMiddleTopAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = middleTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveMiddleBottomAndWait());
+				
+	}
+
+	IEnumerator moveMiddleBottomAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = middleBottomPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		StartCoroutine (pattern());
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveMiddleTopAndWait2());
+		
+	}
+
+	IEnumerator moveMiddleTopAndWait2(){
+		
+		var pointA = transform.position;
+		var pointB = middleTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveLeftTopAndWait());
+		
+	}
+
+	IEnumerator moveLeftTopAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = leftTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveLeftBottomAndWait());
+		
+	}
+
+	IEnumerator moveLeftBottomAndWait(){
+		
+		var pointA = transform.position;
+		var pointB = leftBottomPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		StartCoroutine (pattern());
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveLeftTopAndWait2());
+		
+	}
+
+	IEnumerator moveLeftTopAndWait2(){
+		
+		var pointA = transform.position;
+		var pointB = leftTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (moveToBeginning());
+		
+	}
+
+	IEnumerator moveToBeginning(){
+		
+		var pointA = transform.position;
+		var pointB = rightTopPosition;
+		
+		yield return StartCoroutine(MoveObject(transform, pointA, pointB, moveSpeed));
+		
+		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		//transform.position = new Vector3 (112, 3, -9);
+		
+		yield return new WaitForSeconds(1.2f);
+		StartCoroutine (waitAtBeginning());
+		
+	}
+
+
 	IEnumerator MoveObject(Transform thisTransform, Vector3 startPos, Vector3 endPos, float time)
 	{
 		var i= 0.0f;
@@ -81,39 +225,7 @@ public class BossSpiderScript : MonoBehaviour {
 			}
 		}
 	}
-	IEnumerator wait(){
-		yield return new WaitForSeconds(1.0f);
-		StartCoroutine (patternRight ());
 
-	}
-	IEnumerator moveMiddle(){
-		MoveObject (transform, rightBottomPosition, rightTopPosition, 0.5f);
-		MoveObject (transform, rightTopPosition, middleTopPosition, 0.5f);
-		MoveObject (transform, middleTopPosition, middleBottomPosition, 0.5f);
-		StartCoroutine (pattern ());
-		StartCoroutine (moveLeft ());
-	}
-	void moveMiddleM(){
-
-	}
-	IEnumerator moveLeft(){
-		MoveObject (transform, middleBottomPosition, middleTopPosition, 0.5f);
-		MoveObject (transform, middleTopPosition, leftTopPosition, 0.5f);
-		MoveObject (transform, leftTopPosition, leftBottomPosition, 0.5f);
-		StartCoroutine (pattern ());
-		StartCoroutine (moveRight ());
-	}
-	IEnumerator moveRight(){
-		MoveObject (transform, leftBottomPosition, leftTopPosition, 0.5f);
-		MoveObject (transform, leftTopPosition, rightTopPosition, 0.5f);
-		MoveObject (transform, rightTopPosition, rightBottomPosition, 0.5f);
-		StartCoroutine (patternRight ());
-	}
-	IEnumerator patternRight(){
-		yield return new WaitForSeconds (1.0f);
-		StartCoroutine (pattern ());
-		StartCoroutine (moveMiddle ());
-	}
 	IEnumerator pattern(){
 		shootPlayer ();
 		yield return new WaitForSeconds(1.0f);
@@ -129,12 +241,11 @@ public class BossSpiderScript : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 	}
 	void shootPlayer(){
-		/*Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
 		bullet = Instantiate (projectileStraight,pos , transform.rotation) as GameObject;
-		int dir = Vector3.Normalize(this.transform - player.transform);
-		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, dir));
+		bullet.GetComponent<Rigidbody2D> ().velocity = (player.transform.position - transform.position).normalized*7;
 		Destroy(bullet.gameObject, distance);
-		*/
+
 	}
 	void spawnSpiders(){
 

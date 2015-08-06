@@ -2,14 +2,16 @@
 using System.Collections;
 
 public class GorillaBossScript : MonoBehaviour {
-
-	public Vector3 targetLeftPosition; 
+	[HideInInspector]
+	public Vector3 targetLeftPosition;
+	[HideInInspector]
 	public Vector3 targetRightPosition; 
+	[HideInInspector]
 	public Vector3 targetMiddlePosition;
+	[HideInInspector]
 	public Vector3 targetMiddleTopPosition;
+	
 
-
-	private Vector3 targetAngles;
 	public float smooth = 1f;
 
 	public float moveSpeed = 5f;

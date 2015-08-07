@@ -46,8 +46,8 @@ public class SimplePlatformController : MonoBehaviour {
 
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
-		lvlCheck = GameObject.Find ("LevelCheck");
-		lifes = GameObject.Find ("PlayerLifes");
+		lvlCheck = GameObject.Find ("_GM");
+		lifes = GameObject.Find ("_GM");
 		gravityStore = rb2d.gravityScale;
 
     }

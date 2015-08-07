@@ -5,7 +5,7 @@ public class RestartScript : MonoBehaviour {
 	public int scene;
 	// Use this for initialization
 	void Start () {
-		scene = GameObject.Find ("LevelSelector").GetComponent<LevelScript> ().lastLevelPlayed;
+		scene = GameObject.Find("LevelSelector").GetComponent<LevelScript> ().lastLevelPlayed;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class RestartScript : MonoBehaviour {
 
 	}
 	void restart(){
-	if (GameObject.Find ("PlayerLifes").GetComponent<LifeScript> ().lifes > 0) {
+	if (GameObject.Find ("_GM").GetComponent<LifeScript> ().lifes > 0) {
 			if (scene == 1) {
 				Application.LoadLevel ("Level 1");
 			} else if (scene == 2) {

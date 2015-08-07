@@ -32,6 +32,9 @@ public class RestartScript : MonoBehaviour {
 			} else if (scene == 3) {
 				Application.LoadLevel ("Level 2");
 			}
+			else if (scene==4){
+				Application.LoadLevel ("Level 2 Boss");
+			}
 		} else
 			Application.LoadLevel ("TitleScreen");
 	}

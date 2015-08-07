@@ -16,11 +16,11 @@ public class BossSpiderScript : MonoBehaviour {
 	[HideInInspector]
 	public Vector3 leftTopPosition;
 
-	private float health = 800;
+	private float health = 400;
 	private GameObject item;
 	private float rotation=180;
 	private float moveSpeed = 0.5f;
-		//private GameObject star;
+	private GameObject star;
 	private GameObject player;
 	public GameObject projectileStraight;
 	public GameObject spider;
@@ -39,17 +39,17 @@ public class BossSpiderScript : MonoBehaviour {
 		rightTopPosition = new Vector3 (3, 20, 0);
 		leftBottomPosition = new Vector3 (-17, 7, 0);
 		leftTopPosition = new Vector3 (-17, 20, 0);
-		//star = GameObject.Find ("EndObject");
+		star = GameObject.Find ("EndObject");
 		StartCoroutine (waitAtBeginning());
 		player = GameObject.Find ("Player");
-		//star = GameObject.Find ("EndObject");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (health <= 0)
 		{
-			//item = Instantiate(star, new Vector3(117,10,-5),  Quaternion.identity) as GameObject;
+			item = Instantiate(star, new Vector3(-5,7,0),  Quaternion.identity) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);

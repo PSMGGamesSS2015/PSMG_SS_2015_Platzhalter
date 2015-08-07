@@ -15,13 +15,13 @@ public class GoalScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D coll){
 		if (coll.tag == "Player") {
 			if(Application.loadedLevelName=="Level 1"){
-				float fadeTime = GameObject.Find ("EventSystem").GetComponent<Fading>().BeginFade(1);
+				float fadeTime = GameObject.Find ("_GM").GetComponent<Fading>().BeginFade(1);
 				StartCoroutine( waitforfade(fadeTime));
 				Destroy (GameObject.Find("LevelSelector").gameObject);
 				Application.LoadLevel("Level 1 Boss");
 			}
 			if(Application.loadedLevelName=="Level 2"){
-				float fadeTime = GameObject.Find ("EventSystem").GetComponent<Fading>().BeginFade(1);
+				float fadeTime = GameObject.Find ("_GM").GetComponent<Fading>().BeginFade(1);
 				StartCoroutine( waitforfade(fadeTime));
 				Destroy (GameObject.Find("LevelSelector").gameObject);
 				Application.LoadLevel("Level 2 Boss");

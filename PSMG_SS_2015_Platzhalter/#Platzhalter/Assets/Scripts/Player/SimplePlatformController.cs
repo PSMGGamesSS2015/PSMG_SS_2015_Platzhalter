@@ -244,4 +244,15 @@ public class SimplePlatformController : MonoBehaviour {
 		yield return new WaitForSeconds(fadeTime);
 	}
 
+	void OnCollisionEnter2D(Collision2D collider){
+		if (collider.transform.tag == "Platform") {
+			transform.parent = collider.transform;
+		}
+	}
+	void OnCollisionExit2D(Collision2D collider){
+		if (collider.transform.tag == "Platform") {
+			transform.parent = null;
+		}
+	}
+
 }

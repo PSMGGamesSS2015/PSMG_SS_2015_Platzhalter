@@ -183,10 +183,11 @@ public class SimplePlatformController : MonoBehaviour {
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
 		StartCoroutine (ControllerRumble ());
-		if (facingRight) {
+		/*if (facingRight) {
 			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
 		}
 		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
+		*/
 		StartCoroutine (Blink ());
 		if (health <= 0)
         {

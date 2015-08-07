@@ -15,9 +15,9 @@ public class MovingPlatformScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		platform.transform.position = Vector3.MoveTowards (platform.transform.position, currentPoint.position, Time.deltaTime * speed);
+		transform.position = Vector3.MoveTowards (transform.position, currentPoint.position, Time.deltaTime * speed);
 
-		if (platform.transform.position == currentPoint.position) {
+		if (transform.position == currentPoint.position) {
 			selection++;
 			if(selection == points.Length){
 				selection=0;

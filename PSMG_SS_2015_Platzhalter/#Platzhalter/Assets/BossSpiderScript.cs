@@ -28,7 +28,7 @@ public class BossSpiderScript : MonoBehaviour {
 	private GameObject spiderspawn2;
 	private GameObject bullet;
 	private float speed = -25f;
-	private float distance= 3.0f;
+	private float distance= 4.0f;
 
 
 	// Use this for initialization
@@ -257,9 +257,10 @@ public class BossSpiderScript : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 	}
 	void shootPlayer(){
-		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-0.75f, transform.position.z);
+		Vector3 posPlayerFixed = new Vector3 (player.transform.position.x, player.transform.position.y+1.5f, player.transform.position.z);
 		bullet = Instantiate (projectileStraight,pos , transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D> ().velocity = (player.transform.position - transform.position).normalized*7;
+		bullet.GetComponent<Rigidbody2D> ().velocity = (posPlayerFixed - transform.position).normalized*7;
 		Destroy(bullet.gameObject, distance);
 
 	}

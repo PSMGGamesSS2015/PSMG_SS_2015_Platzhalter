@@ -36,14 +36,9 @@ public class MonkeyEnemy : MonoBehaviour {
 		}
 	}
 	
-	private void onHit(int i)
+	private void onHit()
 	{
-		if (i == 1) {
-			health -= 10;
-		}
-		if (i == 2) {
-			health -= 20;
-		} 
+		health -= 10; 
 		StartCoroutine (Blink ());
 	}
 	IEnumerator Blink(){
@@ -56,15 +51,11 @@ public class MonkeyEnemy : MonoBehaviour {
 			}
 		}
 	}
-	void OnTriggerEnter2D(Collider2D collider)
+	void OnTriggerEnter2D(Collider2D player)
 	{
-		if (collider.gameObject.tag == "BulletPlayer")
+		if (player.gameObject.tag == "BulletPlayer")
 		{
-			onHit(1);
-		}
-		if (collider.gameObject.tag == "Mine")
-		{
-			onHit(2);
+			onHit();
 		}
 	}
 }

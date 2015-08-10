@@ -43,14 +43,9 @@ public class HittingEnemyScript : MonoBehaviour {
         }
     }
 
-    private void onHit(int i)
+    private void onHit()
     {
-		if (i == 1) {
-			health -= 10;
-		}
-		if (i == 2) {
-			health -= 20;
-		}
+        health -= 20;
 		StartCoroutine (Blink ());
 	}
 	IEnumerator Blink(){
@@ -71,13 +66,8 @@ public class HittingEnemyScript : MonoBehaviour {
 
         if (collider.gameObject.tag == "BulletPlayer")
         {
-            onHit(1);
+            onHit();
         }
-		if (collider.gameObject.tag == "Mine")
-		{
-			onHit(2);
-		}
-	
 
     }
 	

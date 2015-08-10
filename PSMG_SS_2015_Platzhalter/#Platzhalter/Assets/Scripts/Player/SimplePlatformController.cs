@@ -22,7 +22,7 @@ public class SimplePlatformController : MonoBehaviour {
     public GameObject player;
     public GameObject UIController;
 
-    public bool grounded = true;
+    private bool grounded = true;
     private Rigidbody2D rb2d;
 
 	private Vector2 boostSpeed = new Vector2(700,0);
@@ -46,8 +46,8 @@ public class SimplePlatformController : MonoBehaviour {
 
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
-		lvlCheck = GameObject.Find ("LevelCheck");
-		lifes = GameObject.Find ("PlayerLifes");
+		lvlCheck = GameObject.Find ("_GM");
+		lifes = GameObject.Find ("_GM");
 		gravityStore = rb2d.gravityScale;
 
     }
@@ -183,10 +183,11 @@ public class SimplePlatformController : MonoBehaviour {
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
 		StartCoroutine (ControllerRumble ());
-		if (facingRight) {
+		/*if (facingRight) {
 			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
 		}
 		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
+		*/
 		StartCoroutine (Blink ());
 		if (health <= 0)
         {
@@ -242,6 +243,17 @@ public class SimplePlatformController : MonoBehaviour {
     }
 	IEnumerator waitforfade(float fadeTime){
 		yield return new WaitForSeconds(fadeTime);
+	}
+
+	void OnCollisionEnter2D(Collision2D collider){
+		if (collider.transform.tag == "Platform") {
+			transform.parent = collider.transform;
+		}
+	}
+	void OnCollisionExit2D(Collision2D collider){
+		if (collider.transform.tag == "Platform") {
+			transform.parent = null;
+		}
 	}
 
 }

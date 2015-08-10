@@ -55,13 +55,9 @@ public class ShootingEnemy : MonoBehaviour {
         }
     }
 
-	private void onHit(int i){
-		if (i == 1) {
-			health -= 10;
-		}
-		if (i == 2) {
-			health -= 20;
-		}
+    private void onHit()
+    {
+        health -= 10; 
 		StartCoroutine (Blink ());
 	}
 	IEnumerator Blink(){
@@ -75,14 +71,10 @@ public class ShootingEnemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D player)
     {
-		if (GetComponent<Collider>().gameObject.tag == "BulletPlayer")
-		{
-			onHit(1);
-		}
-		if (GetComponent<Collider>().gameObject.tag == "Mine")
-		{
-			onHit(2);
-		}
+        if (player.gameObject.tag == "BulletPlayer")
+        {
+            onHit();
+        }
     }
 
 }

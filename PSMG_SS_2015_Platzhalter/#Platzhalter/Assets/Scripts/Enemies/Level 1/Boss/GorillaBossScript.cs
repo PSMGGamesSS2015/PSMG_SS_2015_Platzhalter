@@ -324,14 +324,9 @@ public class GorillaBossScript : MonoBehaviour {
 			yield return null; 
 		}
 	}
-	private void onHit(int i)
+	private void onHit()
 	{
-		if (i == 1) {
-			health -= 20;
-		}
-		if (i == 2) {
-			health -= 40;
-		}
+		health -= 20;
 		StartCoroutine (Blink ());
 	}
 	IEnumerator Blink(){
@@ -353,10 +348,7 @@ public class GorillaBossScript : MonoBehaviour {
 		
 		if (collider.gameObject.tag == "BulletPlayer")
 		{
-			onHit(1);
-		}
-		if (collider.gameObject.tag == "Mine") {
-			onHit(2);
+			onHit();
 		}
 		
 	}

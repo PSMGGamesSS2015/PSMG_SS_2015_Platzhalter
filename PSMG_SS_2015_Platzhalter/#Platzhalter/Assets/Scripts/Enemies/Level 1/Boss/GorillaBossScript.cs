@@ -267,7 +267,6 @@ public class GorillaBossScript : MonoBehaviour {
 		foreach (Transform child in transform) {
 			child.gameObject.transform.localEulerAngles = new Vector3 (270, 0, 0);
 			child.gameObject.transform.localScale = new Vector3(0.18f,0.1801f,0.1089f);
-
 		}
 		yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
 

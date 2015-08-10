@@ -9,14 +9,17 @@ public class Shooting : MonoBehaviour {
     private float vertical = 0f;
     private float damage = 10;
     private bool facingRight = true;
+	private SimplePlatformController thePlayer;
     public GameObject projectile;
 	public GameObject projectile2;
+	public GameObject projectile3;
 	public AudioSource shootSoundW1,shootSoundW2;
 	private int weapon;
 	private GameObject bullet;
 	private GameObject bullet_weapon2_1,bullet_weapon2_2;
 	private float timer;
 	private float fireRate=0.3f;
+	private float placeRate = 0.6f;
 
 	public GameObject ui_controller;
 
@@ -24,6 +27,7 @@ public class Shooting : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		weapon = 1;
+		thePlayer = FindObjectOfType<SimplePlatformController>();
 	}
 	
 	// Update is called once per frame
@@ -45,6 +49,12 @@ public class Shooting : MonoBehaviour {
 					timer = fireRate;
 				}
 				break;
+			case 3:
+				if(Input.GetButton("Fire1") && timer <=0){
+					fireWeaponThree();
+					timer = placeRate;
+				}
+				break;
 			}
 
 		
@@ -52,14 +62,18 @@ public class Shooting : MonoBehaviour {
 		timer -= Time.deltaTime;
         if (Input.GetButtonDown("Fire2"))
         {
-            if (weapon==2)
-            {
-				switchToWeaponOne();
-            }
-            else if(weapon==1)
+            if (weapon==1)
             {
 				switchToWeaponTwo();
             }
+            else if(weapon==2)
+            {
+				switchToWeaponThree();
+            }
+			else if(weapon == 3)
+			{
+				switchToWeaponOne();
+			}
         }
 	
 	}
@@ -85,6 +99,13 @@ public class Shooting : MonoBehaviour {
 		Destroy(bullet_weapon2_1.gameObject, 1);
 		Destroy(bullet_weapon2_2.gameObject,1);
 	}
+	private void fireWeaponThree(){
+		if (thePlayer.grounded) {
+			Vector2 pos = new Vector2 (transform.position.x, transform.position.y - 0.85f);
+			bullet = Instantiate (projectile3, pos, transform.rotation) as GameObject;
+			Destroy (bullet.gameObject, 7);
+		}
+	}
 	private void switchToWeaponOne(){
 		weapon=1;
 		vertical = 0f;
@@ -94,6 +115,12 @@ public class Shooting : MonoBehaviour {
 		weapon=2;
 		vertical = 9f;
 		ui_controller.GetComponent<UIScript> ().switch_w1_w2 ();
+	}
+	private void switchToWeaponThree(){
+		weapon = 3;
+		vertical = 0f;
+		ui_controller.GetComponent<UIScript> ().unlock_w3 ();
+		ui_controller.GetComponent<UIScript> ().switch_w2_w3();
 	}
 
 

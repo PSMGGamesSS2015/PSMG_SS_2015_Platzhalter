@@ -194,7 +194,7 @@ public class BossSpiderScript : MonoBehaviour {
 		Vector3 point = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		//transform.position = new Vector3 (112, 3, -9);
 		
-		yield return new WaitForSeconds(3.5f);
+		yield return new WaitForSeconds(0.5f);
 		StartCoroutine (waitAtBeginning());
 		
 	}

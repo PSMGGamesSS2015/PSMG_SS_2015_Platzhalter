@@ -73,12 +73,12 @@ public class whalebossscript : MonoBehaviour {
 	IEnumerator waitAtBeginning(){
 		
 		yield return new WaitForSeconds(1f);
-		StartCoroutine (shootLeft());
+		//StartCoroutine (shootLeft());
 		yield return new WaitForSeconds(1f);
-		StartCoroutine (rotate ());
+		//StartCoroutine (rotate ());
 		
 	}
-	IEnumerator rotate(){
+	/*IEnumerator rotate(){
 
 	}
 	IEnumerator shootLeft(){
@@ -92,5 +92,5 @@ public class whalebossscript : MonoBehaviour {
 		bullet = Instantiate (projectile, pos, transform.rotation) as GameObject;
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(Random.Range(-4,-8), 18));
 		Destroy(bullet.gameObject, 3f);
-	}
+	}*/
 }

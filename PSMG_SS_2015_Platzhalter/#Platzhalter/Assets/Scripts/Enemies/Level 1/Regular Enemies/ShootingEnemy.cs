@@ -73,13 +73,13 @@ public class ShootingEnemy : MonoBehaviour {
 		}
 	}
 
-    void OnTriggerEnter2D(Collider2D player)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-		if (GetComponent<Collider>().gameObject.tag == "BulletPlayer")
+		if (collider.gameObject.tag == "BulletPlayer")
 		{
 			onHit(1);
 		}
-		if (GetComponent<Collider>().gameObject.tag == "Mine")
+		if (collider.gameObject.tag == "Mine")
 		{
 			onHit(2);
 		}

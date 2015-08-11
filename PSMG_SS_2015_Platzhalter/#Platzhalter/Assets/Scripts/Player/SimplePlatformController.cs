@@ -73,7 +73,7 @@ public class SimplePlatformController : MonoBehaviour {
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
         }
-		if (grounded && canBoost && Input.GetKeyDown (KeyCode.LeftShift)) {
+		if (grounded && canBoost && Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true) {
 			StartCoroutine(Boost(0.3f));
 		}
 
@@ -121,7 +121,6 @@ public class SimplePlatformController : MonoBehaviour {
 		if (!onLadder) {
 			rb2d.gravityScale = gravityStore;
 		}
-
         if (h > 0 && !facingRight)
         {
             Flip();
@@ -130,7 +129,6 @@ public class SimplePlatformController : MonoBehaviour {
         {
             Flip();
         }
-
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
@@ -140,14 +138,6 @@ public class SimplePlatformController : MonoBehaviour {
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
 		}
-		//Dash
-		if(Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true){
-			if(facingRight){
-			rb2d.AddForce(new Vector2(15000f,0f));
-			}
-			else 
-				rb2d.AddForce(new Vector2(-15000f,0f));
-			}
     }
 	IEnumerator jumpFromLadder(){
 		onLadder=false;
@@ -192,7 +182,6 @@ public class SimplePlatformController : MonoBehaviour {
         {
 			//deathSound.Play();
 			onDeath();
-
         }
 	}
 	void onDeath(){

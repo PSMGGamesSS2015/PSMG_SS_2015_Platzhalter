@@ -20,7 +20,7 @@ public class Shooting : MonoBehaviour {
 	private float timer;
 	private float fireRate=0.3f;
 	private float placeRate = 0.6f;
-
+	private GameObject lvlCheck;
 	public GameObject ui_controller;
 
 
@@ -28,6 +28,7 @@ public class Shooting : MonoBehaviour {
 	void Start () {
 		weapon = 1;
 		thePlayer = FindObjectOfType<SimplePlatformController>();
+		lvlCheck = GameObject.Find ("_GM");
 	}
 	
 	// Update is called once per frame
@@ -66,10 +67,10 @@ public class Shooting : MonoBehaviour {
             {
 				switchToWeaponTwo();
             }
-			else if(weapon==2)
+			else if(weapon==2 && lvlCheck.GetComponent<LevelCheck>().levelTwoDone==true)
             {
 				switchToWeaponThree();
-            }
+			}else if(weapon==2)switchToWeaponOne();
 			else if(weapon == 3)
 			{
 				switchToWeaponOne();
@@ -109,7 +110,10 @@ public class Shooting : MonoBehaviour {
 	private void switchToWeaponOne(){
 		weapon=1;
 		vertical = 0f;
-		ui_controller.GetComponent<UIScript> ().switch_w3_w1 ();
+		if (lvlCheck.GetComponent<LevelCheck> ().levelTwoDone == true) {
+			ui_controller.GetComponent<UIScript> ().switch_w3_w1 ();
+		}
+		ui_controller.GetComponent<UIScript> ().switch_w2_w1 ();
 	}
 	private void switchToWeaponTwo(){
 		weapon=2;

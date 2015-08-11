@@ -28,9 +28,6 @@ public class PatrolingEnemyScript : MonoBehaviour {
         if (health <= 0)
         {
             int i = Random.Range(1, 5);
-
-            Debug.Log(i);
-           
             if (i == 1)
             {
 				item = Instantiate(healthUp, transform.position,  Quaternion.identity) as GameObject;

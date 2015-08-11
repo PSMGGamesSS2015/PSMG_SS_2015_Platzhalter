@@ -7,13 +7,10 @@ public class BossEndScript : MonoBehaviour {
 	private float maximalScale=1.3f;
 	public AudioSource endClip ;
 	public AudioSource bg;
-	// Use this for initialization
+
 	void Start () {
-
-
 	}
 
-	// Update is called once per frame
 	void Update () {
 		foreach (Transform childTransform in this.transform) {
 			childTransform.gameObject.transform.Rotate (transform.up, angle);
@@ -23,27 +20,22 @@ public class BossEndScript : MonoBehaviour {
 		newScale *= minimalScale+ sin;
 		transform.localScale = newScale;
 	}
-	IEnumerator EndLevel(){
-		destroyItem ();
-		Destroy (GameObject.Find("LevelSelector").gameObject);
-		GameObject.Find ("LevelCheck").GetComponent<LevelCheck>().levelOneDone =true;
-		yield return new WaitForSeconds (1.2f);
-	}
-	IEnumerator StartNewLevel(){
 
-		Application.LoadLevel("Level Select");
-		yield return new WaitForEndOfFrame ();
-	}
 	void destroyItem(){
 		foreach (Transform childTransform in this.transform) {
 			Destroy(childTransform.gameObject);
 		}
 		Destroy (this.gameObject);
 	}
+
 	void OnTriggerEnter2D(Collider2D collider){
 		if (collider.gameObject.tag == "Player") {
-			StartCoroutine(EndLevel());
-			StartCoroutine(StartNewLevel());
+			destroyItem ();
+			Destroy (GameObject.Find("LevelSelector").gameObject);
+			GameObject.Find ("_GM").GetComponent<LevelCheck>().levelOneDone =true;
+			
+			Application.LoadLevel("Level Select");
+
 		}
 	}
 }

@@ -97,6 +97,12 @@ public class UIScript : MonoBehaviour {
 		W2_A.enabled = true;
 		W2_IA.enabled = false;
 	}
+	public void switch_w3_w1(){
+		W3_A.enabled = false;
+		W3_IA.enabled = true;
+		W1_A.enabled = true;
+		W1_IA.enabled = false;
+	}
 	public void switch_w2_w1(){
 		W2_A.enabled = false;
 		W2_IA.enabled = true;

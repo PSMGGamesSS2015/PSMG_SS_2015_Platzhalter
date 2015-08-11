@@ -66,7 +66,7 @@ public class Shooting : MonoBehaviour {
             {
 				switchToWeaponTwo();
             }
-            else if(weapon==2)
+			else if(weapon==2)
             {
 				switchToWeaponThree();
             }
@@ -101,7 +101,7 @@ public class Shooting : MonoBehaviour {
 	}
 	private void fireWeaponThree(){
 		if (thePlayer.grounded) {
-			Vector2 pos = new Vector2 (transform.position.x, transform.position.y - 0.85f);
+			Vector3 pos = new Vector3 (transform.position.x, transform.position.y - 0.85f,transform.position.z);
 			bullet = Instantiate (projectile3, pos, transform.rotation) as GameObject;
 			Destroy (bullet.gameObject, 7);
 		}
@@ -109,7 +109,7 @@ public class Shooting : MonoBehaviour {
 	private void switchToWeaponOne(){
 		weapon=1;
 		vertical = 0f;
-		ui_controller.GetComponent<UIScript> ().switch_w2_w1 ();
+		ui_controller.GetComponent<UIScript> ().switch_w3_w1 ();
 	}
 	private void switchToWeaponTwo(){
 		weapon=2;

@@ -47,7 +47,7 @@ public class SimplePlatformController : MonoBehaviour {
 		health = 100;
         rb2d = GetComponent<Rigidbody2D>();
 		lvlCheck = GameObject.Find ("_GM");
-		lifes = GameObject.Find ("_GM");
+		lifes = GameObject.Find ("PlayerLifes");
 		gravityStore = rb2d.gravityScale;
 
     }
@@ -228,9 +228,7 @@ public class SimplePlatformController : MonoBehaviour {
         if (player.gameObject.tag == "DeathZone")
         {
 			onDeath ();
-			
 		}
-
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
             onHit();        

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class bossend : MonoBehaviour {
@@ -38,4 +38,4 @@ public class bossend : MonoBehaviour {
 			StartCoroutine(EndLevel());
 		}
 	}
-}
+}*/

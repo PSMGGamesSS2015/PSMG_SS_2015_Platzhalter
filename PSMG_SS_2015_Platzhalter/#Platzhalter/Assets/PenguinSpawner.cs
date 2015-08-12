@@ -7,13 +7,17 @@ public class PenguinSpawner : MonoBehaviour {
 	private GameObject peng;
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("spawn", 2, 2);
+		InvokeRepeating("spawn", 3f, 3f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
-		peng = Instantiate (penguin,pos,transform.rotation) as GameObject;
 
+
+	}
+	void spawn(){
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y+1.7f, transform.position.z);
+		peng = Instantiate (penguin,pos,transform.rotation) as GameObject;
+		peng.GetComponent<PenguinScript> ().goal = GameObject.Find ("goalpenguin").transform;
 	}
 }

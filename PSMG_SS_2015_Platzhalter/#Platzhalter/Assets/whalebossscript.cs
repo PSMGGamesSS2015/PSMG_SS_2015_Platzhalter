@@ -6,7 +6,7 @@ public class whalebossscript : MonoBehaviour {
 	public Vector3 rightPosition,leftPosition;
 	public Vector3 rightFinPos,leftFinPos;
 	public Vector3 leftTopPos,rightTopPos;
-	private float health = 400;
+	private float health = 20;
 	private GameObject item;
 	private GameObject star;
 	private GameObject player;
@@ -30,7 +30,8 @@ public class whalebossscript : MonoBehaviour {
 	void Update () {
 		if (health <= 0)
 		{
-			item = Instantiate(star, new Vector3(-5,7,0),  Quaternion.identity) as GameObject;
+			Debug.Log ("death");
+			item = Instantiate(star, new Vector3(2,10,0),  Quaternion.identity) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);
@@ -50,18 +51,18 @@ public class whalebossscript : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D collider){
-		
-		
+
 		if (collider.gameObject.tag == "BulletPlayer")
 		{
 			onHit();
+			Debug.Log ("hitt");
 		}
 		
 	}
 	private void onHit()
 	{
 		health -= 20;
-		StartCoroutine (Blink ());
+		//StartCoroutine (Blink ());
 	}
 	IEnumerator Blink(){
 		foreach (Transform child in transform) {                                                                                                                                                            

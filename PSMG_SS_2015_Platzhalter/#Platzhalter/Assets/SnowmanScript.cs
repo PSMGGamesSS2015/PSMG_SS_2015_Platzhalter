@@ -9,14 +9,14 @@ public class SnowmanScript : MonoBehaviour {
 	public int speed;
 
 	private float health = 20;
-	private float distance = 4f;
+	private float distance = 2.5f;
 	private GameObject item;
 	private GameObject healthUp;
 	
 	void Start () {
 		healthUp = GameObject.Find ("HealthUp");
 		player = GameObject.Find ("Player");
-		InvokeRepeating("fire", 2, 2);
+		InvokeRepeating("fire", 2.5f, 2.5f);
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class SnowmanScript : MonoBehaviour {
 		
 	}
 	private void fire(){
-		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-1.5f, transform.position.z);
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y+0.5f, transform.position.z);
 		bullet = Instantiate (proj,pos,transform.rotation) as GameObject;
 		bullet.GetComponent<Rigidbody2D> ().velocity = (player.transform.position - transform.position).normalized*speed;
 		Destroy(bullet.gameObject, distance);
@@ -35,9 +35,6 @@ public class SnowmanScript : MonoBehaviour {
 	{
 		if (health <= 0) {
 			int i = Random.Range (1, 5);
-			
-			Debug.Log (i);
-			
 			if (i == 1) {
 				item = Instantiate (healthUp, transform.position, Quaternion.identity) as GameObject;
 			}
@@ -55,10 +52,12 @@ public class SnowmanScript : MonoBehaviour {
 	}
 	IEnumerator Blink(){
 		foreach (Transform child in transform) {                                                                                                                                                             
-			child.gameObject.GetComponent<Renderer> ().enabled = false;
-			yield return new WaitForSeconds (0.02f);
-			child.gameObject.GetComponent<Renderer> ().enabled = true;
-			yield return new WaitForSeconds (0.02f);
+			foreach (Transform chilchild in child.transform){
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = false;
+				yield return new WaitForSeconds (0.02f);
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = true;
+				yield return new WaitForSeconds (0.02f);
+			}
 		}
 	}
 	

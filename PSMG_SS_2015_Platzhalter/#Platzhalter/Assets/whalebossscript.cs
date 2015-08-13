@@ -6,7 +6,7 @@ public class whalebossscript : MonoBehaviour {
 	public Vector3 rightPosition,leftPosition;
 	public Vector3 rightFinPos,leftFinPos;
 	public Vector3 leftTopPos,rightTopPos;
-	private float health = 20;
+	private float health = 400;
 	private GameObject item;
 	private GameObject star;
 	private GameObject player;
@@ -31,7 +31,7 @@ public class whalebossscript : MonoBehaviour {
 		if (health <= 0)
 		{
 			Debug.Log ("death");
-			item = Instantiate(star, new Vector3(2,10,0),  Quaternion.identity) as GameObject;
+			item = Instantiate(star, new Vector3(2,10,4),  Quaternion.identity) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);

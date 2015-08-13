@@ -8,7 +8,7 @@ public class SimplePlatformController : MonoBehaviour {
     private bool facingRight = true;
     public bool jump = false;
 	public Animator anim;
-
+	private bool invincible = false;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     private float jumpForce = 500f;
@@ -173,10 +173,11 @@ public class SimplePlatformController : MonoBehaviour {
 		health -= 20;
         UIController.GetComponent<UIScript>().update_life(health);
 		StartCoroutine (ControllerRumble ());
-		if (facingRight) {
+		/*if (facingRight) {
 			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
 		}
 		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
+		*/
 		StartCoroutine (Blink ());
 		if (health <= 0)
         {
@@ -220,13 +221,21 @@ public class SimplePlatformController : MonoBehaviour {
 		}
         if (player.gameObject.tag == "Enemy" || player.gameObject.tag == "BulletEnemy")
         {
-            onHit();        
-        }
+			if (!invincible)
+			{
+            	onHit();        
+				StartCoroutine(invincibility());
+			}
+		}
 		if (player.gameObject.tag == "HealthUp") {
 			onHeal();
 		}
-
     }
+	IEnumerator invincibility(){
+		invincible=true;
+		yield return new WaitForSeconds (0.6f);
+		invincible=false;
+	}
 	IEnumerator waitforfade(float fadeTime){
 		yield return new WaitForSeconds(fadeTime);
 	}

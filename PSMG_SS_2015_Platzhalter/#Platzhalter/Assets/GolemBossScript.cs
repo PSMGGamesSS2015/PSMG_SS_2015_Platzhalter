@@ -27,7 +27,7 @@ public class GolemBossScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {if (health <= 0)
 		{
-			item = Instantiate(star, new Vector3(-5,7,0),  Quaternion.identity) as GameObject;
+			item = Instantiate(star, new Vector3(-7,19,27),  Quaternion.identity) as GameObject;
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);
@@ -81,11 +81,11 @@ public class GolemBossScript : MonoBehaviour {
 
 		float number2 = Random.Range (1, 4);
 		StartCoroutine (fireWave2(number2));
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1.8f);
 		
 		number2 = Random.Range (1, 4);
 		StartCoroutine (fireWave2(number2));
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1.8f);
 		
 		number2 = Random.Range (1, 4);
 		StartCoroutine (fireWave2(number2));
@@ -112,7 +112,7 @@ public class GolemBossScript : MonoBehaviour {
 			bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed2, vertical));
 			Destroy(bullet.gameObject, distance);
 			
-			bullet = Instantiate (projectile2, new Vector3(transform.position.x,transform.position.y -3,transform.position.z), transform.rotation) as GameObject;
+			bullet = Instantiate (projectile2, new Vector3(transform.position.x,transform.position.y -2.2f,transform.position.z), transform.rotation) as GameObject;
 			bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed2, vertical));
 			Destroy(bullet.gameObject, distance);
 		}
@@ -122,7 +122,7 @@ public class GolemBossScript : MonoBehaviour {
 			bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed2, vertical));
 			Destroy(bullet.gameObject, distance);
 			
-			bullet = Instantiate (projectile2, new Vector3(transform.position.x,transform.position.y -3,transform.position.z), transform.rotation) as GameObject;
+			bullet = Instantiate (projectile2, new Vector3(transform.position.x,transform.position.y -2.2f,transform.position.z), transform.rotation) as GameObject;
 			bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed2, vertical));
 			Destroy(bullet.gameObject, distance);
 		}
@@ -132,7 +132,7 @@ public class GolemBossScript : MonoBehaviour {
 	IEnumerator shoot1(){
 		
 		Debug.Log ("shoot");
-		
+		yield return new WaitForSeconds (1.5f);
 		StartCoroutine (shoot2());
 		yield return new WaitForSeconds(1f);
 		StartCoroutine (shoot2());
@@ -180,6 +180,7 @@ public class GolemBossScript : MonoBehaviour {
 		if (collider.gameObject.tag == "BulletPlayer")
 		{
 			onHit();
+
 		}
 		
 	}

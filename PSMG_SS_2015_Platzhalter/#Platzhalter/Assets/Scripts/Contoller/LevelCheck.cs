@@ -11,7 +11,9 @@ public class LevelCheck : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		if (levelTwoDone == true) {
+			GameObject.Find("UI_Controller").GetComponent<UIScript>().unlock_w3();
+		}
 	}
 
 

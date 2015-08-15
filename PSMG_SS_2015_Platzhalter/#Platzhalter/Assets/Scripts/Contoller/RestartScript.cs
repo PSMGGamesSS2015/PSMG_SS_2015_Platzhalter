@@ -42,6 +42,14 @@ public class RestartScript : MonoBehaviour {
 				Destroy(GameObject.Find("LevelSelector"));
 				Application.LoadLevel ("Level 3 Boss");
 			}
+			else if (scene ==7) {
+				Destroy(GameObject.Find("LevelSelector"));
+				Application.LoadLevel ("Level 4");
+			}
+			else if (scene == 8) {
+				Destroy(GameObject.Find("LevelSelector"));
+				Application.LoadLevel ("Level 4 Boss");
+			}
 		} else
 			Application.LoadLevel ("Level Select");
 	}

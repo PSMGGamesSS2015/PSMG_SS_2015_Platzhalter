@@ -6,8 +6,10 @@ public class LevelSelectScript : MonoBehaviour {
 	private int selection;
 	public Image selector;
 	private bool m_isAxisInUse=false;
+	private GameObject gamemaster;
 	// Use this for initialization
 	void Start () {
+		gamemaster = GameObject.Find ("_GM");
 		selection = 1;
 		checkSelection ();
 		Destroy (GameObject.Find ("PlayerLifes").gameObject);
@@ -25,9 +27,23 @@ public class LevelSelectScript : MonoBehaviour {
 					if (selection == 1) {
 						selection++;
 						checkSelection ();
+					} else if(selection ==2 && gamemaster.GetComponent<LevelCheck>().levelTwoDone==true){
+						selection++;
+						checkSelection ();
+					}else if(selection ==3&& gamemaster.GetComponent<LevelCheck>().levelThreeDone==true){
+						selection++;
+						checkSelection ();
 					}
 				} else if (axis < 0) {
 					if (selection == 2) {
+						selection--;
+						checkSelection ();
+					}
+					else if(selection==3){
+						selection--;
+						checkSelection ();
+					}
+					else if(selection==4){
 						selection--;
 						checkSelection ();
 					}
@@ -46,7 +62,10 @@ public class LevelSelectScript : MonoBehaviour {
 				Application.LoadLevel ("Level 1");
 			} else if (selection == 2) {
 				Application.LoadLevel("Level 2");
-
+			}else if (selection == 3) {
+				Application.LoadLevel("Level 3");
+			}else if (selection == 4) {
+				Application.LoadLevel("Level 4");
 			}
 		}
 	}
@@ -57,10 +76,14 @@ public class LevelSelectScript : MonoBehaviour {
 				break;
 			case 2:
 				selector.rectTransform.anchoredPosition= new Vector2(-2,174);
-
 				break;
-
-			}
+			case 3:
+				selector.rectTransform.anchoredPosition= new Vector2(579,78);
+				break;
+			case 4:
+				selector.rectTransform.anchoredPosition = new Vector2(579,-353);
+			break;
+		}
 			
 		}
 }

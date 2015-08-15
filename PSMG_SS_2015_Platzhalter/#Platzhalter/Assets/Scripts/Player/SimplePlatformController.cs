@@ -7,9 +7,11 @@ public class SimplePlatformController : MonoBehaviour {
 
     private bool facingRight = true;
     public bool jump = false;
+	public bool wallJump = false;
+	private bool wallJumping = true;
 	public Animator anim;
 	private bool invincible = false;
-    public float moveForce = 365f;
+	public float moveForce = 365f;
     public float maxSpeed = 5f;
     private float jumpForce = 500f;
 
@@ -18,11 +20,13 @@ public class SimplePlatformController : MonoBehaviour {
 	private float gravityStore;
 
     public Transform groundCheck;
+	public Transform wallCheck;
 
     public GameObject player;
     public GameObject UIController;
 
     public bool grounded = true;
+	public bool walled = true;
     private Rigidbody2D rb2d;
 
 	private Vector2 boostSpeed = new Vector2(700,0);
@@ -66,13 +70,21 @@ public class SimplePlatformController : MonoBehaviour {
 		}
 
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
+
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder))
+		walled = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+
+		if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder))
         {
             jump = true;
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
         }
+		if(Input.GetButtonDown("Jump")&&walled){
+			wallJump = true;
+			anim.SetBool("Jump",true);
+			jumpSound.Play ();
+		}
 		if (grounded && canBoost && Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true) {
 			StartCoroutine(Boost(0.3f));
 		}
@@ -135,6 +147,18 @@ public class SimplePlatformController : MonoBehaviour {
             jump = false;
 			anim.SetBool("Jump",false);
         }
+		if (wallJump) {
+			if(wallJumping){
+			rb2d.AddForce(new Vector2(0f, jumpForce));
+			if (facingRight) {
+			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
+			}
+			else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
+			wallJump = false;
+			anim.SetBool("Jump",false);
+			StartCoroutine(wallJumpingCooldown());
+			}
+		}
 		if (Input.GetButtonUp ("Horizontal")) {
 			anim.SetFloat("Walking",0f);
 		}
@@ -235,6 +259,11 @@ public class SimplePlatformController : MonoBehaviour {
 		invincible=true;
 		yield return new WaitForSeconds (0.6f);
 		invincible=false;
+	}
+	IEnumerator wallJumpingCooldown(){
+		wallJumping = false;
+		yield return new WaitForSeconds (1.6f);
+		wallJumping=true;
 	}
 	IEnumerator waitforfade(float fadeTime){
 		yield return new WaitForSeconds(fadeTime);

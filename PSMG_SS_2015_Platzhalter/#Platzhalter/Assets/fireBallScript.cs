@@ -4,6 +4,8 @@ using System.Collections;
 public class fireBallScript : MonoBehaviour {
 	public Transform pos1;
 	public Vector3 pointB;
+	private Vector3 targetAngles;
+	public float smooth = 1f;
 	void Start () {
 		pointB = pos1.position;
 	}

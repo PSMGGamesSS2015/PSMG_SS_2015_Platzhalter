@@ -3,6 +3,7 @@ using System.Collections;
 
 public class rotatingFireScript : MonoBehaviour {
 	public Transform rotateAroundPoint;
+	public int dir;
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +11,6 @@ public class rotatingFireScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.RotateAround(rotateAroundPoint.position, Vector3.forward, 75 * Time.deltaTime);
+		transform.RotateAround(rotateAroundPoint.position, Vector3.forward *dir, 75 * Time.deltaTime);
 	}
 }

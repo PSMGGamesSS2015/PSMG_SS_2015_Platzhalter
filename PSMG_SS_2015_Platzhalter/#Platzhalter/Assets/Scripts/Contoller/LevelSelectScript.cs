@@ -13,6 +13,12 @@ public class LevelSelectScript : MonoBehaviour {
 		selection = 1;
 		checkSelection ();
 		Destroy (GameObject.Find ("PlayerLifes").gameObject);
+		if (gamemaster.GetComponent<LevelCheck> ().levelTwoDone == true) {
+			GameObject.Find ("lockLevel3").GetComponent<Image>().enabled=false;
+		}
+		if (gamemaster.GetComponent<LevelCheck> ().levelThreeDone == true) {
+			GameObject.Find ("lockLevel4").GetComponent<Image>().enabled=false;
+		}
 	}
 	
 	// Update is called once per frame

@@ -68,6 +68,21 @@ public class SimplePlatformController : MonoBehaviour {
 		if(Input.GetKeyDown (KeyCode.F3)){
 			Application.LoadLevel("Level 2");
 		}
+		if(Input.GetKeyDown (KeyCode.F4)){
+			Application.LoadLevel("Level 2 Boss");
+		}
+		if(Input.GetKeyDown (KeyCode.F5)){
+			Application.LoadLevel("Level 3");
+		}
+		if(Input.GetKeyDown (KeyCode.F6)){
+			Application.LoadLevel("Level 3 Boss");
+		}
+		if(Input.GetKeyDown (KeyCode.F7)){
+			Application.LoadLevel("Level 4");
+		}
+		if(Input.GetKeyDown (KeyCode.F8)){
+			Application.LoadLevel("Level 4 Boss");
+		}
 		
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
 		

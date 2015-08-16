@@ -48,7 +48,7 @@ public class GolemBossScript : MonoBehaviour {
 	IEnumerator choseMove(){
 		
 		yield return new WaitForSeconds(1.5f);
-		var number = Random.Range(1,7);
+		var number = Random.Range(1,6);
 
 		if (number == 1 || number == 2 || number == 3) {
 

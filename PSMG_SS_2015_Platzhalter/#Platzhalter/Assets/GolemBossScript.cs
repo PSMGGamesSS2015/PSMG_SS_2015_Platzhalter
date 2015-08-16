@@ -148,10 +148,10 @@ public class GolemBossScript : MonoBehaviour {
 
 		Debug.Log ("shoot");
 
-		Vector3 pos = new Vector3 (transform.position.x, transform.position.y-0.75f, transform.position.z);
+		Vector3 pos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		Vector3 posPlayerFixed = new Vector3 (player.transform.position.x, player.transform.position.y+1.5f, player.transform.position.z);
 		bullet = Instantiate (projectile,pos , transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody2D> ().velocity = (posPlayerFixed - transform.position).normalized*7;
+		bullet.GetComponent<Rigidbody2D> ().velocity = (posPlayerFixed - transform.position).normalized*8;
 		Destroy(bullet.gameObject, distance);
 
 		yield return new WaitForSeconds(0.1f);

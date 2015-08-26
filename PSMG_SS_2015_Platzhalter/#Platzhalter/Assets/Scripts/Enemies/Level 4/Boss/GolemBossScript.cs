@@ -40,14 +40,14 @@ public class GolemBossScript : MonoBehaviour {
 
 	IEnumerator waitAtBeginning(){
 		
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(0.0001f);
 		StartCoroutine (choseMove());
 		
 	}
 
 	IEnumerator choseMove(){
 		
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(0.5f);
 		var number = Random.Range(1,6);
 
 		if (number == 1 || number == 2 || number == 3) {
@@ -132,7 +132,7 @@ public class GolemBossScript : MonoBehaviour {
 	IEnumerator shoot1(){
 		
 		Debug.Log ("shoot");
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1f);
 		StartCoroutine (shoot2());
 		yield return new WaitForSeconds(1f);
 		StartCoroutine (shoot2());

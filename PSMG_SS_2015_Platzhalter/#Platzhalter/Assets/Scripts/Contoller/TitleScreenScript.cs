@@ -49,7 +49,7 @@ public class TitleScreenScript : MonoBehaviour {
 
 
 		if (Input.GetButtonDown ("Submit")||Input.GetButtonDown("Fire1")||Input.GetButtonDown("Jump")) {
-			Debug.Log ("JUMP");
+
 			if(selection==1){
 				Application.LoadLevel ("Level 1");
 			}

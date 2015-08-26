@@ -10,7 +10,8 @@ public class rotatingFireScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		transform.RotateAround(rotateAroundPoint.position, Vector3.forward *dir, 75 * Time.deltaTime);
+	void FixedUpdate () {
+		transform.RotateAround (rotateAroundPoint.position, Vector3.forward * dir, 75 * Time.deltaTime);
+
 	}
 }

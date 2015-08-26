@@ -26,6 +26,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public GameObject UIController;
 	
 	public bool grounded = true;
+	public bool platformed = false;
 	public bool walled = true;
 	private Rigidbody2D rb2d;
 	
@@ -87,9 +88,10 @@ public class SimplePlatformController : MonoBehaviour {
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
 		
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		platformed = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Platform"));
 		walled = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		
-		if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder))
+		if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder) || (Input.GetButtonDown("Jump")&& platformed))
 		{
 			jump = true;
 			anim.SetBool("Jump",true);
@@ -100,7 +102,7 @@ public class SimplePlatformController : MonoBehaviour {
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
 		}
-		if (grounded && canBoost && Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true) {
+		if ((grounded || platformed) && canBoost && Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true) {
 			StartCoroutine(Boost(0.3f));
 		}
 		

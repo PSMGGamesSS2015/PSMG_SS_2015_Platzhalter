@@ -29,7 +29,6 @@ public class EnemyAI : MonoBehaviour {
 		rb2d = GetComponent<Rigidbody2D> ();
 
 		if (target == null) {
-			Debug.LogError("No Player found.");
 			return;
 		}
 
@@ -65,7 +64,6 @@ public class EnemyAI : MonoBehaviour {
 		if (currentWaypoint >= path.vectorPath.Count) {
 			if(pathIsEnded)
 				return;
-			Debug.Log ("End of path reached.");
 			pathIsEnded = true;
 			return;
 		}

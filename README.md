@@ -1,7 +1,7 @@
-#Platzhalter
+#Dimensional Hazard
 
 #Developer: 
-Ewald Reinhardt (Owlwald) - Project Manager, Level Designer 
+Ewald Reinhardt (Owlwald/Xanthras) - Project Manager, Level Designer 
 
 Khang Ho (Muhey) - Graphic Designer, Audio Engineer
 

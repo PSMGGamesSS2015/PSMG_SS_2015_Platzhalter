@@ -7,17 +7,24 @@ public class UIScript : MonoBehaviour {
 	public Image W1_A,W1_IA,W2_A,W2_IA,W2_L,W3_A,W3_IA,W3_L,W4_A,W4_IA,W4_L;
 	public Image L_3,L_2,L_1;
 	public Image LB_1,LB_2,LB_3,LB_4,LB_5;
+	public Image P_BG,P_T;
 
 	void Start () {
 		setupWeapons ();
 		setupLife ();
 		setupLifebar ();
+		setupPause ();
 	}
 	
 	void Update () {
 	
 	}
-
+	private void setupPause(){
+		P_BG = GameObject.Find ("PauseBG").GetComponent<Image>();
+		P_T = GameObject.Find ("PauseText").GetComponent<Image>();
+		P_T.enabled = false;
+		P_BG.enabled = false;
+	}
 	private void setupWeapons(){
 		W1_A.enabled = true;
 		W1_IA.enabled = false;
@@ -90,6 +97,12 @@ public class UIScript : MonoBehaviour {
 		W2_A.enabled = true;
 		W2_IA.enabled = false;
 	}
+	public void switch_w3_w1(){
+		W3_A.enabled = false;
+		W3_IA.enabled = true;
+		W1_A.enabled = true;
+		W1_IA.enabled = false;
+	}
 	public void switch_w2_w1(){
 		W2_A.enabled = false;
 		W2_IA.enabled = true;
@@ -151,9 +164,29 @@ public class UIScript : MonoBehaviour {
 			LB_4.enabled = false;
 			LB_5.enabled = false;
 		}
+	}
 
-
+		public void update_lifes(int lifes){
+			if(lifes==3){
+				L_3.enabled = true;
+				L_2.enabled = false;
+				L_1.enabled = false;
+			}
+			else if(lifes==2){
+				L_3.enabled = false;
+				L_2.enabled = true;
+				L_1.enabled = false;
+			}
+			else if(lifes==1){
+				L_3.enabled = false;
+				L_2.enabled = false;
+				L_1.enabled = true;
+			}
+		}
+	public void togglePause(){
+		P_BG.enabled = !P_BG.enabled;
+		P_T.enabled = !P_T.enabled;
+	}
 
 		
 	}
-}

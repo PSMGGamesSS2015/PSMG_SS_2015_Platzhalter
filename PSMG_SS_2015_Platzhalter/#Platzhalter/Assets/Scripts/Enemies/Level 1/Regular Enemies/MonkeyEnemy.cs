@@ -3,9 +3,11 @@ using System.Collections;
 
 public class MonkeyEnemy : MonoBehaviour {
 	private float health = 30f;
+    private GameObject item;
+    private GameObject healthUp;
 	// Use this for initialization
 	void Start () {
-	
+		healthUp = GameObject.Find ("HealthUp");
 	}
 	
 	// Update is called once per frame
@@ -16,6 +18,12 @@ public class MonkeyEnemy : MonoBehaviour {
 	{
 		if (health <= 0)
 		{
+            int i = Random.Range(1, 5);
+            if (i == 1)
+            {
+				item = Instantiate(healthUp, transform.position,  Quaternion.identity) as GameObject;
+            }
+
 			foreach (Transform childTransform in this.transform)
 			{
 				Destroy(childTransform.gameObject);
@@ -25,17 +33,35 @@ public class MonkeyEnemy : MonoBehaviour {
 		}
 	}
 	
-	private void onHit()
+	private void onHit(int i)
 	{
-		Debug.Log ("MonkeyHIT");
-		health -= 10; 
+		if (i == 1) {
+			health -= 10;
+		}
+		if (i == 2) {
+			health -= 20;
+		} 
+		StartCoroutine (Blink ());
 	}
-	
-	void OnTriggerEnter2D(Collider2D player)
+	IEnumerator Blink(){
+		foreach (Transform child in transform) {                                                                                                                                                             
+			foreach (Transform chilchild in child.transform){
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = false;
+				yield return new WaitForSeconds (0.02f);
+				chilchild.gameObject.GetComponent<Renderer> ().enabled = true;
+				yield return new WaitForSeconds (0.02f);
+			}
+		}
+	}
+	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (player.gameObject.tag == "BulletPlayer")
+		if (collider.gameObject.tag == "BulletPlayer")
 		{
-			onHit();
+			onHit(1);
+		}
+		if (collider.gameObject.tag == "Mine")
+		{
+			onHit(2);
 		}
 	}
 }

@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: cfc41116f058aae4d9575babd1705482
+timeCreated: 1440586161
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bauch
+    100004: Bone.001
+    100006: Camera
+    100008: //RootNode
+    100010: Cube.000
+    100012: Cube.001
+    100014: Cube.002
+    100016: Cube.003
+    100018: Cube.004
+    100020: Cube.005
+    100022: Cube.006
+    100024: foot roll.l
+    100026: foot roll.r
+    100028: "fu\xDF"
+    100030: "fu\xDF.002"
+    100032: Head
+    100034: kanone.l
+    100036: kanone.r
+    100038: Lamp
+    100040: leg control
+    100042: leg control.002
+    100044: leg pole target.l
+    100046: leg pole target.r
+    100048: leg.ik.l
+    100050: leg.ik.r
+    100052: Neck
+    100054: Oberarm.l
+    100056: Oberarm.r
+    100058: oberes bein
+    100060: oberes bein.002
+    100062: Root
+    100064: Sun
+    100066: Sun.001
+    100068: toes control.l
+    100070: toes control.r
+    100072: unterarm.l
+    100074: unterarm.r
+    100076: unteres bein
+    100078: unteres bein.001
+    100080: zehen
+    100082: zehen.002
+    400000: Armature
+    400002: Bauch
+    400004: Bone.001
+    400006: Camera
+    400008: //RootNode
+    400010: Cube.000
+    400012: Cube.001
+    400014: Cube.002
+    400016: Cube.003
+    400018: Cube.004
+    400020: Cube.005
+    400022: Cube.006
+    400024: foot roll.l
+    400026: foot roll.r
+    400028: "fu\xDF"
+    400030: "fu\xDF.002"
+    400032: Head
+    400034: kanone.l
+    400036: kanone.r
+    400038: Lamp
+    400040: leg control
+    400042: leg control.002
+    400044: leg pole target.l
+    400046: leg pole target.r
+    400048: leg.ik.l
+    400050: leg.ik.r
+    400052: Neck
+    400054: Oberarm.l
+    400056: Oberarm.r
+    400058: oberes bein
+    400060: oberes bein.002
+    400062: Root
+    400064: Sun
+    400066: Sun.001
+    400068: toes control.l
+    400070: toes control.r
+    400072: unterarm.l
+    400074: unterarm.r
+    400076: unteres bein
+    400078: unteres bein.001
+    400080: zehen
+    400082: zehen.002
+    4300000: Cube.006
+    4300002: Cube.005
+    4300004: Cube.004
+    4300006: Cube.003
+    4300008: Cube.002
+    4300010: Cube.000
+    4300012: Cube.001
+    7400000: Walking_Final
+    9500000: //RootNode
+    13700000: Cube.000
+    13700002: Cube.001
+    13700004: Cube.002
+    13700006: Cube.003
+    13700008: Cube.004
+    13700010: Cube.005
+    13700012: Cube.006
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walking_Final
+      takeName: Armature|Walk_blocking
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Bauch
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Neck
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Neck/Head
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.l
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.l/unterarm.l
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.l/unterarm.l/kanone.l
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.r
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.r/unterarm.r
+        weight: 1
+      - path: Armature/Root/Bauch/Bone.001/Oberarm.r/unterarm.r/kanone.r
+        weight: 1
+      - path: Armature/Root/Bauch/oberes bein
+        weight: 1
+      - path: Armature/Root/Bauch/oberes bein/leg.ik.l
+        weight: 1
+      - path: Armature/Root/Bauch/oberes bein.002
+        weight: 1
+      - path: Armature/Root/Bauch/oberes bein.002/leg.ik.r
+        weight: 1
+      - path: Armature/Root/leg control
+        weight: 1
+      - path: Armature/Root/leg control/foot roll.l
+        weight: 1
+      - path: Armature/Root/leg control/foot roll.l/unteres bein.001
+        weight: 1
+      - path: "Armature/Root/leg control/fu\xDF"
+        weight: 1
+      - path: "Armature/Root/leg control/fu\xDF/zehen"
+        weight: 1
+      - path: Armature/Root/leg control/toes control.l
+        weight: 1
+      - path: Armature/Root/leg control.002
+        weight: 1
+      - path: Armature/Root/leg control.002/foot roll.r
+        weight: 1
+      - path: Armature/Root/leg control.002/foot roll.r/unteres bein
+        weight: 1
+      - path: "Armature/Root/leg control.002/fu\xDF.002"
+        weight: 1
+      - path: "Armature/Root/leg control.002/fu\xDF.002/zehen.002"
+        weight: 1
+      - path: Armature/Root/leg control.002/toes control.r
+        weight: 1
+      - path: Armature/Root/leg pole target.l
+        weight: 1
+      - path: Armature/Root/leg pole target.r
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.001
+        weight: 1
+      - path: Cube.002
+        weight: 1
+      - path: Cube.003
+        weight: 1
+      - path: Cube.004
+        weight: 1
+      - path: Cube.005
+        weight: 1
+      - path: Cube.006
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

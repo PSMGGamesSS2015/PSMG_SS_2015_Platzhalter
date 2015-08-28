@@ -4,20 +4,19 @@ using UnityEngine.UI;
 
 public class TitleScreenScript : MonoBehaviour {
 
+	/*
+	 * Script for the titlescreen. functions the same way the level select does. "load" and "options" selection currently have no function.
+	 */
+
+
 	private int selection;
 	public Image selector;
 	private bool m_isAxisInUse=false;
-	// Use this for initialization
 	void Start () {
 		selection = 1;
 		checkSelection ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-
-	}
 	void FixedUpdate(){
 		if( Input.GetAxisRaw("Vertical") != 0)
 		{

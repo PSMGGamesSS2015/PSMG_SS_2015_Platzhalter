@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class BossEndScript : MonoBehaviour {
+
+
+	/*
+	 * Script for the star, that falls down when the player kills the boss. handles what happens if the player collects it, and lets it rotate and scale for a neat animation 
+	 */
 	private float angle =3f;
 	private float minimalScale=1f;
 	private float maximalScale=1.3f;

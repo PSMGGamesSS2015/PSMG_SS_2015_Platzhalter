@@ -3,15 +3,10 @@ using System.Collections;
 
 public class bulletScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/*
+	 * Script for the bullets of the player, so they disappear after hitting an enemy or a wall
+	 */
+
 	void OnTriggerEnter2D(Collider2D collider){
 		if (collider.tag == "Ground") {
 			foreach (Transform childTransform in this.transform)

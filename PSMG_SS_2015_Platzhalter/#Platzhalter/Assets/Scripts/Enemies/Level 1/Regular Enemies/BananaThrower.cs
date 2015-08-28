@@ -3,6 +3,11 @@ using System.Collections;
 
 public class BananaThrower : MonoBehaviour {
 
+	/*
+	 * Script for the monkeys that throw bananas at you
+	 */
+
+
 	private float speed = -6f;
 	private float vertical = 10f;
 	private float health = 30f;
@@ -10,7 +15,6 @@ public class BananaThrower : MonoBehaviour {
 	private GameObject bullet;
 	private float distance;
 
-	// Use this for initialization
 	void Start () {
 		InvokeRepeating("fire", 1.5f, 1.5f);
 	}

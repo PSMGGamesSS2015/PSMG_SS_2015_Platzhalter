@@ -3,17 +3,10 @@ using System.Collections;
 
 public class LevelScript : MonoBehaviour {
 	public int lastLevelPlayed;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/*
+	 * Script for an indestructible object(except at the end of each level), that is checked when you respawn
+	 */
 	void Awake(){
-
 		DontDestroyOnLoad (transform.gameObject);
 	}
 }

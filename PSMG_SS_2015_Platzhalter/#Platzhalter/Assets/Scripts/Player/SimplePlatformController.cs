@@ -45,8 +45,7 @@ public class SimplePlatformController : MonoBehaviour {
 	
 	private int health;
 	
-	
-	// Use this for initialization
+
 	void Start() {
 		
 		health = 100;
@@ -56,10 +55,11 @@ public class SimplePlatformController : MonoBehaviour {
 		gravityStore = rb2d.gravityScale;
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update()
 	{
+
+		// Cheats
 		if(Input.GetKeyDown (KeyCode.F1)){
 			Application.LoadLevel("Level 1");
 		}
@@ -84,30 +84,36 @@ public class SimplePlatformController : MonoBehaviour {
 		if(Input.GetKeyDown (KeyCode.F8)){
 			Application.LoadLevel("Level 4 Boss");
 		}
-		
+
+		//calling the update lifes method so the UI is always up to date
 		UIController.GetComponent<UIScript> ().update_lifes (lifes.GetComponent<LifeScript>().lifes);
 		
+		//linecast used for checking if the player can jump/walljump. used below
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		platformed = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Platform"));
 		walled = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-		
+
+		//checks if the player can jump, and sets jump to true. what happens then is coded below
 		if ((Input.GetButtonDown("Jump") && grounded )|| (Input.GetButtonDown("Jump")&&onLadder) || (Input.GetButtonDown("Jump")&& platformed))
 		{
 			jump = true;
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
 		}
+
+		//walljump
 		if(Input.GetButtonDown("Jump")&&walled){
 			wallJump = true;
 			anim.SetBool("Jump",true);
 			jumpSound.Play ();
 		}
+
+		//dashing
 		if ((grounded || platformed) && canBoost && Input.GetButtonDown("Fire3")&&lvlCheck.GetComponent<LevelCheck>().levelOneDone==true) {
 			StartCoroutine(Boost(0.3f));
 		}
 		
 		//Godmode shenanigans
-		
 		if (Input.GetKey (KeyCode.G) && Input.GetKey (KeyCode.LeftShift)) {
 			god=true;
 			health=100000;
@@ -116,39 +122,22 @@ public class SimplePlatformController : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump") && god) {
 			jump=true;
 		}
+
 	}
 	
 	void FixedUpdate()
 	{
+		//basic movement
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		anim.SetFloat("Walking", Mathf.Abs(h));
-		
 		if (h * rb2d.velocity.x < maxSpeed)
 		{
 			rb2d.AddForce(Vector2.right * h * moveForce);
 		}
-		
 		if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
 		{
 			rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-		}
-		
-		if (onLadder) {
-			rb2d.gravityScale = 0f;
-			rb2d.velocity = new Vector2(0,0);
-			
-			if (v * rb2d.velocity.y < maxSpeed)
-			{
-				rb2d.AddForce(Vector2.up * v * moveForce);
-			}
-			
-			if(jump){
-				StartCoroutine(jumpFromLadder());
-			}
-		}
-		if (!onLadder) {
-			rb2d.gravityScale = gravityStore;
 		}
 		if (h > 0 && !facingRight)
 		{
@@ -158,12 +147,35 @@ public class SimplePlatformController : MonoBehaviour {
 		{
 			Flip();
 		}
+		if (Input.GetButtonUp ("Horizontal")) {
+			anim.SetFloat("Walking",0f);
+		}
+
+		//movement on the ladder and after leaving it
+		if (onLadder) {
+			rb2d.gravityScale = 0f;
+			rb2d.velocity = new Vector2(0,0);
+			if (v * rb2d.velocity.y < maxSpeed)
+			{
+				rb2d.AddForce(Vector2.up * v * moveForce);
+			}
+			if(jump){
+				StartCoroutine(jumpFromLadder());
+			}
+		}
+		if (!onLadder) {
+			rb2d.gravityScale = gravityStore;
+		}
+
+		//jumping
 		if (jump)
 		{
 			rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
 			anim.SetBool("Jump",false);
 		}
+
+		//walljump
 		if (wallJump&&lvlCheck.GetComponent<LevelCheck>().levelThreeDone==true) {
 			if(wallJumping){
 				rb2d.AddForce(new Vector2(0f, jumpForce));
@@ -176,14 +188,15 @@ public class SimplePlatformController : MonoBehaviour {
 				StartCoroutine(wallJumpingCooldown());
 			}
 		}
-		if (Input.GetButtonUp ("Horizontal")) {
-			anim.SetFloat("Walking",0f);
-		}
 	}
+
+	//timer, so the player cant jump again after a short time after jumping off a ladder
 	IEnumerator jumpFromLadder(){
 		onLadder=false;
 		yield return new WaitForSeconds (1.0f);
 	}
+
+	//dashing. the player has a burst of movement for a short while
 	IEnumerator Boost(float boostDur)
 	{
 		float time = 0;
@@ -203,6 +216,7 @@ public class SimplePlatformController : MonoBehaviour {
 		yield return new WaitForSeconds (boostCooldown);
 		canBoost = true;
 	}
+
 	void Flip()
 	{
 		facingRight = !facingRight;
@@ -210,28 +224,28 @@ public class SimplePlatformController : MonoBehaviour {
 		player = GameObject.Find("PlayerModel");
 		player.transform.RotateAround(transform.position, transform.up, 180f);
 	}
+
+	//what happens after the player is being hit
 	public void onHit(){
 		health -= 20;
 		UIController.GetComponent<UIScript>().update_life(health);
 		StartCoroutine (ControllerRumble ());
-		/*if (facingRight) {
-			rb2d.AddForce (new Vector2 (-5f, 3f), ForceMode2D.Impulse);
-		}
-		else rb2d.AddForce (new Vector2 (5f, 3f), ForceMode2D.Impulse);
-		*/
 		StartCoroutine (Blink ());
 		if (health <= 0)
 		{
-			//deathSound.Play();
 			onDeath();
 		}
 	}
+
+	//what happens after the player dies
 	void onDeath(){
 		Destroy(this.gameObject);
 		Application.LoadLevel("Game Over");
 		lifes.GetComponent<LifeScript> ().lifes -= 1;
 		GamePad.SetVibration(0,0,0);
 	}
+
+	//player blinks after being hit, for better feedback
 	IEnumerator Blink(){
 		GameObject model = GameObject.Find ("Cube.001");
 		for (int i = 0; i<=3; i++) {                                                                                                                                                                              
@@ -241,11 +255,15 @@ public class SimplePlatformController : MonoBehaviour {
 			yield return new WaitForSeconds (0.05f);
 		}
 	}
+
+	//after being hit, the controller rumbles for a short time
 	IEnumerator ControllerRumble(){
 		GamePad.SetVibration (0, 1f,1f);
 		yield return new WaitForSeconds (0.4f);
 		GamePad.SetVibration (0, 0, 0);
 	}
+
+	//after picking up the healthup, the player gets 20 life back
 	void onHeal(){
 		if (health < 100) {
 			health+=20;
@@ -253,7 +271,8 @@ public class SimplePlatformController : MonoBehaviour {
 		lifeSound.Play ();
 		UIController.GetComponent<UIScript> ().update_life (health);
 	}
-	
+
+	//for colliding with gameobjects
 	void OnTriggerEnter2D(Collider2D player)
 	{
 		if (player.gameObject.tag == "DeathZone")
@@ -272,19 +291,21 @@ public class SimplePlatformController : MonoBehaviour {
 			onHeal();
 		}
 	}
+
+	//invincibility frame
 	IEnumerator invincibility(){
 		invincible=true;
 		yield return new WaitForSeconds (0.6f);
 		invincible=false;
 	}
+	//cooldown for the walljump
 	IEnumerator wallJumpingCooldown(){
 		wallJumping = false;
 		yield return new WaitForSeconds (1.6f);
 		wallJumping=true;
 	}
-	IEnumerator waitforfade(float fadeTime){
-		yield return new WaitForSeconds(fadeTime);
-	}
+
+	//methods so the player sticks to moving platforms
 	void OnCollisionEnter2D(Collision2D collider){
 		if (collider.transform.tag == "Platform") {
 			transform.parent = collider.transform;

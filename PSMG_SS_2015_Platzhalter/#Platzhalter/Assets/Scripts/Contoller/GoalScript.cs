@@ -3,15 +3,9 @@ using System.Collections;
 
 public class GoalScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/**
+	 * Script for the object at the end of the level, which teleports the player to the boss
+	 */
 	void OnTriggerEnter2D (Collider2D coll){
 		if (coll.tag == "Player") {
 			if(Application.loadedLevelName=="Level 1"){

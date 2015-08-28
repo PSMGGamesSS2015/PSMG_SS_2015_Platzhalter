@@ -13,17 +13,13 @@ public class ShootingEnemy : MonoBehaviour {
     private GameObject item;
     private GameObject healthUp;
 
-	
 
-	// Use this for initialization
 	void Start () {
 		InvokeRepeating("fire", 2, 2);
 		healthUp = GameObject.Find ("HealthUp");
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void Update () {
         checkHealth();
 	}
 

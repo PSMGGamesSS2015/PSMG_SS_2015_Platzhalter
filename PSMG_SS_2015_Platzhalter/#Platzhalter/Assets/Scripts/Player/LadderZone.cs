@@ -3,19 +3,21 @@ using System.Collections;
 
 public class LadderZone : MonoBehaviour {
 
-	private SimplePlatformController thePlayer;
-	// Use this for initialization
+	/*
+	 * Script for the ladders of the game. handling the movement of the player when hes in the ladder zone is done by the SimplePlatformController.cs
+	 */
+
+	private SimplePlatformController player;
 	void Start () 
 	{
-		thePlayer = FindObjectOfType<SimplePlatformController>();
+		player = FindObjectOfType<SimplePlatformController>();
 	}
-	
-	// Update is called once per frame
+
 	void OnTriggerEnter2D (Collider2D ladder) 
 	{
 		if (ladder.gameObject.tag == "Player") 
 		{
-			thePlayer.onLadder = true;
+			player.onLadder = true;
 		}
 	}
 
@@ -23,7 +25,7 @@ public class LadderZone : MonoBehaviour {
 	{
 		if (ladder.gameObject.tag == "Player") 
 		{
-			thePlayer.onLadder = false;
+			player.onLadder = false;
 		}
 	}
 

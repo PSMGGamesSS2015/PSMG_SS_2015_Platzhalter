@@ -4,6 +4,14 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour {
 
+	/*
+	 * Script for handling the ui of the game. there is an image for each state of the weapons, life and lifebar. 
+	 * for every possibility theres a method, although many of them aren't used right now.
+	 * also handles the way the lifebar is shown by having the method be called by the SimplePlatformController.cs
+	 */
+
+
+
 	public Image W1_A,W1_IA,W2_A,W2_IA,W2_L,W3_A,W3_IA,W3_L,W4_A,W4_IA,W4_L;
 	public Image L_3,L_2,L_1;
 	public Image LB_1,LB_2,LB_3,LB_4,LB_5;

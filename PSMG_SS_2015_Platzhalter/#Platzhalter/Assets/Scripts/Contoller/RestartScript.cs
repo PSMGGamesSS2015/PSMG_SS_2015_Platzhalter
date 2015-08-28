@@ -2,55 +2,61 @@
 using System.Collections;
 
 public class RestartScript : MonoBehaviour {
-	public int scene;
-	// Use this for initialization
-	void Start () {
-		scene = GameObject.Find ("LevelSelector").GetComponent<LevelScript> ().lastLevelPlayed;
-	}
+
+	public int levelCheck;
+	private float respawnTime=5.0f;
 	
-	// Update is called once per frame
+	void Start () {
+		levelCheck = GameObject.Find ("LevelSelector").GetComponent<LevelScript> ().lastLevelPlayed;
+	}
+
 	void Update () {
 		StartCoroutine (liveAgain ());
 		if(Input.GetButtonDown ("Submit")||Input.GetButtonDown("Fire1")||Input.GetButtonDown("Jump")){
 				restart();
 		}
 	}
+	/*
+	 * method to automatically restart the player after 5 seconds
+	 */
 	IEnumerator liveAgain(){
-		yield return new WaitForSeconds(5.0f);
+		yield return new WaitForSeconds(respawnTime);
 		restart ();
-
 	}
+
+	/*
+	 *	method to check which level the player has played before he died, and then respawns the player in that level.
+	 */
 	void restart(){
-	if (GameObject.Find ("PlayerLifes").GetComponent<LifeScript> ().lifes > 0) {
-
-			if (scene == 1) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 1");
-			} else if (scene == 2) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 1 Boss");
-			} else if (scene == 3) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 2");
-			}else if (scene == 4) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 2 Boss");
-			}else if (scene == 5) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 3");
-			}else if (scene == 6) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 3 Boss");
-			}
-			else if (scene ==7) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 4");
-			}
-			else if (scene == 8) {
-				Destroy(GameObject.Find("LevelSelector"));
-				Application.LoadLevel ("Level 4 Boss");
-			}
-		} else
-			Application.LoadLevel ("Level Select");
-	}
+		if (GameObject.Find ("PlayerLifes").GetComponent<LifeScript> ().lifes > 0) {
+				if (levelCheck == 1) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 1");
+				} else if (levelCheck == 2) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 1 Boss");
+				} else if (levelCheck == 3) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 2");
+				}else if (levelCheck == 4) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 2 Boss");
+				}else if (levelCheck == 5) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 3");
+				}else if (levelCheck == 6) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 3 Boss");
+				}
+				else if (levelCheck ==7) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 4");
+				}
+				else if (levelCheck == 8) {
+					Destroy(GameObject.Find("LevelSelector"));
+					Application.LoadLevel ("Level 4 Boss");
+				}
+			} else
+				Application.LoadLevel ("Level Select");
+		}
 }

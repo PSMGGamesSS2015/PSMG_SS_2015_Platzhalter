@@ -3,12 +3,11 @@ using System.Collections;
 
 public class PauseScript : MonoBehaviour {
 	private bool pause=false;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+
+	/*
+	 * script for pausing the game
+	 */
+
 	void Update () {
 		if (Input.GetButtonDown ("Submit")) {
 			pause = !pause;

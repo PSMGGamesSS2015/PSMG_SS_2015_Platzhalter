@@ -3,16 +3,26 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class LevelSelectScript : MonoBehaviour {
+
 	private int selection;
-	public Image selector;
+	public Image cursor;
 	private bool m_isAxisInUse=false;
 	private GameObject gamemaster;
-	// Use this for initialization
+
+
 	void Start () {
 		gamemaster = GameObject.Find ("_GM");
 		selection = 1;
 		checkSelection ();
 		Destroy (GameObject.Find ("PlayerLifes").gameObject);
+		unlockLevels ();
+	}
+
+	/*
+	 * this method is for checking if the player can visit the third and fourth level, and unlocks the lock accordingly
+	 */
+
+	void unlockLevels(){
 		if (gamemaster.GetComponent<LevelCheck> ().levelTwoDone == true) {
 			GameObject.Find ("lockLevel3").GetComponent<Image>().enabled=false;
 		}
@@ -20,11 +30,9 @@ public class LevelSelectScript : MonoBehaviour {
 			GameObject.Find ("lockLevel4").GetComponent<Image>().enabled=false;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/*
+	 * In here the Input of the player is checked, checks if the corresponding level has been unlocked yet, and changes the selection accordingly
+	 */
 	void FixedUpdate(){
 		if (Input.GetAxisRaw ("Horizontal") != 0) {
 			if (m_isAxisInUse == false) {
@@ -75,19 +83,22 @@ public class LevelSelectScript : MonoBehaviour {
 			}
 		}
 	}
+		/*
+	 	* method to check which level has been selected. then puts the cursor to the anchorpoint of that level.
+	 	*/
 		private void checkSelection(){
 			switch (selection) {
 			case 1:
-				selector.rectTransform.anchoredPosition=  new Vector2(-560,78);
+				cursor.rectTransform.anchoredPosition=  new Vector2(-560,78);
 				break;
 			case 2:
-				selector.rectTransform.anchoredPosition= new Vector2(-2,174);
+				cursor.rectTransform.anchoredPosition= new Vector2(-2,174);
 				break;
 			case 3:
-				selector.rectTransform.anchoredPosition= new Vector2(579,78);
+				cursor.rectTransform.anchoredPosition= new Vector2(579,78);
 				break;
 			case 4:
-				selector.rectTransform.anchoredPosition = new Vector2(579,-353);
+				cursor.rectTransform.anchoredPosition = new Vector2(579,-353);
 			break;
 		}
 			

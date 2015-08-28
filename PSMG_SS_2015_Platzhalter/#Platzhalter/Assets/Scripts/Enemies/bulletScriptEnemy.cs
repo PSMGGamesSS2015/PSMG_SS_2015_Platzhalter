@@ -3,15 +3,9 @@ using System.Collections;
 
 public class bulletScriptEnemy : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/**
+	 * Script for enemy bullets, so if it hits the player or the ground it disappears
+	 */
 
     void OnTriggerEnter2D(Collider2D collider)
     {

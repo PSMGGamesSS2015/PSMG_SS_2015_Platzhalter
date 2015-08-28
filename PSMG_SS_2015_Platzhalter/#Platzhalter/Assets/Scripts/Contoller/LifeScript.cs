@@ -5,12 +5,14 @@ public class LifeScript : MonoBehaviour {
 
 	public int lifes;
 
-	// Use this for initialization
+	/*
+	 * script for handling how many lifes the player has, so he has only 3 tries for each level.
+	 */
+
 	void Start () {
 		lifes = 3;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 		DontDestroyOnLoad (transform.gameObject);

@@ -12,4 +12,8 @@ Philipp Weber (webphil) - Programmin, Animations
 
 #Download Release 1.0:
 
-https://www.dropbox.com/s/jskkcge54vz1l05/Dimensional%20Hazard.zip?dl=0
+Windows:
+https://www.dropbox.com/s/yge0emo6y6f2hwa/dimensional_hazard_windows.zip?dl=0
+
+Mac:
+https://www.dropbox.com/s/vxti577o83vj621/dimensional_hazard_mac.zip?dl=0
